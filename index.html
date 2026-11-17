@@ -93,11 +93,11 @@
 
       <!-- 地區切換 Tabs -->
       <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar" id="region-tabs">
-        <button onclick="filterRegion('全部')" class="region-btn active px-4 py-1.5 rounded-full text-xs font-bold bg-amber-600 text-white transition-all shadow-xs" data-reg="全部">全部師傅</button>
-        <button onclick="filterRegion('一日男友')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="一日男友">💖 一日男友</button>
-        <button onclick="filterRegion('雙北')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="雙北">雙北地區</button>
-        <button onclick="filterRegion('台中')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="台中">台中地區</button>
-        <button onclick="filterRegion('高雄')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="高雄">高雄地區</button>
+        <button onclick="filterRegion('全部')" class="region-btn active px-4 py-1.5 rounded-full text-xs font-bold bg-amber-600 text-white transition-all shadow-xs" data-reg="全部">全部師傅 (44位)</button>
+        <button onclick="filterRegion('雙北')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="雙北">台北舒緩按摩 (33位)</button>
+        <button onclick="filterRegion('台中')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="台中">台中舒緩按摩 (8位)</button>
+        <button onclick="filterRegion('高雄')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="高雄">高雄舒緩按摩 (5位)</button>
+        <button onclick="filterRegion('一日男友')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-rose-600 border border-rose-200 hover:border-rose-400 transition-all font-bold" data-reg="一日男友">💖 一日男友 (6位)</button>
       </div>
 
       <!-- 師傅卡片容器 (3 列直式大卡片排版) -->
@@ -225,7 +225,151 @@
               </div>
             </div>
             <div id="services-grid" class="grid grid-cols-1 gap-2.5">
-              <!-- 由 JS 動態注入服務方案卡片 -->
+              <!-- 經典課程 90分鐘 -->
+              <div class="service-card p-3.5 rounded-xl border border-stone-200 bg-white hover:border-amber-300 transition-all cursor-pointer flex justify-between items-center" data-id="srv_classic_90">
+                <div class="flex items-start gap-3">
+                  <div class="mt-0.5">
+                    <input type="radio" name="srv_radio" class="accent-amber-600 w-4 h-4">
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5 mb-0.5">
+                      <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">經典推薦</span>
+                      <h5 class="font-bold text-sm text-stone-900">經典課程</h5>
+                    </div>
+                    <p class="text-[11px] text-stone-500 leading-relaxed max-w-md">會以完整的指壓及油壓為主。</p>
+                    <div class="text-[10px] text-stone-400 mt-1 flex items-center gap-3">
+                      <span><i class="far fa-clock text-amber-600 mr-0.5"></i> 90 分鐘</span>
+                      <span><i class="fas fa-heart text-amber-600 mr-0.5"></i> 工作疲勞、肩頸緊繃、需要扎實舒緩的女性</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right flex-shrink-0 pl-3">
+                  <span class="text-[11px] text-stone-400 line-through block">NT$ 2,800</span>
+                  <span class="text-base font-bold text-amber-700 font-mono">NT$ 2,400</span>
+                </div>
+              </div>
+
+              <!-- 高級課程 120分鐘 (招牌人氣) -->
+              <div class="service-card active border-amber-500 bg-amber-50/40 ring-1 ring-amber-400 p-3.5 rounded-xl border transition-all cursor-pointer flex justify-between items-center" data-id="srv_premium_120">
+                <div class="flex items-start gap-3">
+                  <div class="mt-0.5">
+                    <input type="radio" name="srv_radio" checked class="accent-amber-600 w-4 h-4">
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5 mb-0.5">
+                      <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">👍 招牌人氣推薦</span>
+                      <h5 class="font-bold text-sm text-stone-900">高級課程</h5>
+                    </div>
+                    <p class="text-[11px] text-stone-500 leading-relaxed max-w-md">除了指壓及油壓以外，加入精油體推（身體挑逗），氛圍帶動，以及深層組織按摩(著重在骨盆底肌、女性子宮的放鬆)。</p>
+                    <div class="text-[10px] text-stone-400 mt-1 flex items-center gap-3">
+                      <span><i class="far fa-clock text-amber-600 mr-0.5"></i> 2 小時 (120 分鐘)</span>
+                      <span><i class="fas fa-heart text-amber-600 mr-0.5"></i> 渴望深度極致放鬆、調理子宮與深層身心療癒的女性</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right flex-shrink-0 pl-3">
+                  <span class="text-[11px] text-stone-400 line-through block">NT$ 4,200</span>
+                  <span class="text-base font-bold text-amber-700 font-mono">NT$ 3,600</span>
+                </div>
+              </div>
+
+              <!-- 一日男友：2 小時體驗方案 -->
+              <div class="service-card p-3.5 rounded-xl border border-stone-200 bg-white hover:border-amber-300 transition-all cursor-pointer flex justify-between items-center" data-id="srv_bf_2h">
+                <div class="flex items-start gap-3">
+                  <div class="mt-0.5">
+                    <input type="radio" name="srv_radio" class="accent-amber-600 w-4 h-4">
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5 mb-0.5">
+                      <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-50 text-rose-700 border border-rose-200">💖 初次體驗</span>
+                      <h5 class="font-bold text-sm text-stone-900">一日男友：2 小時體驗方案</h5>
+                    </div>
+                    <p class="text-[11px] text-stone-500 leading-relaxed max-w-md">【服務內容】約會、吃飯、一起旅遊、聚會陪同、商業應酬。2小時初步體驗帥氣男師溫柔體貼陪伴。</p>
+                    <div class="text-[10px] text-stone-400 mt-1 flex items-center gap-3">
+                      <span><i class="far fa-clock text-amber-600 mr-0.5"></i> 2 小時 (120 分鐘)</span>
+                      <span><i class="fas fa-heart text-rose-500 mr-0.5"></i> 約會 / 吃飯 / 一起旅遊 / 聚會陪同 / 商業應酬</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right flex-shrink-0 pl-3">
+                  <span class="text-[11px] text-stone-400 line-through block">NT$ 3,600</span>
+                  <span class="text-base font-bold text-amber-700 font-mono">NT$ 3,200</span>
+                </div>
+              </div>
+
+              <!-- 一日男友：4 小時基本方案 -->
+              <div class="service-card p-3.5 rounded-xl border border-stone-200 bg-white hover:border-amber-300 transition-all cursor-pointer flex justify-between items-center" data-id="srv_bf_4h">
+                <div class="flex items-start gap-3">
+                  <div class="mt-0.5">
+                    <input type="radio" name="srv_radio" class="accent-amber-600 w-4 h-4">
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5 mb-0.5">
+                      <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-50 text-rose-700 border border-rose-200">💖 熱門基本款</span>
+                      <h5 class="font-bold text-sm text-stone-900">一日男友：4 小時基本方案</h5>
+                    </div>
+                    <p class="text-[11px] text-stone-500 leading-relaxed max-w-md">【服務內容】約會、吃飯、一起旅遊、聚會陪同、商業應酬。4小時充裕時間漫步約會、看電影或聚會相伴。</p>
+                    <div class="text-[10px] text-stone-400 mt-1 flex items-center gap-3">
+                      <span><i class="far fa-clock text-amber-600 mr-0.5"></i> 4 小時 (240 分鐘)</span>
+                      <span><i class="fas fa-heart text-rose-500 mr-0.5"></i> 約會 / 吃飯 / 一起旅遊 / 聚會陪同 / 商業應酬</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right flex-shrink-0 pl-3">
+                  <span class="text-[11px] text-stone-400 line-through block">NT$ 5,000</span>
+                  <span class="text-base font-bold text-amber-700 font-mono">NT$ 4,500</span>
+                </div>
+              </div>
+
+              <!-- 一日男友：8 小時約會方案 -->
+              <div class="service-card p-3.5 rounded-xl border border-stone-200 bg-white hover:border-amber-300 transition-all cursor-pointer flex justify-between items-center" data-id="srv_bf_8h">
+                <div class="flex items-start gap-3">
+                  <div class="mt-0.5">
+                    <input type="radio" name="srv_radio" class="accent-amber-600 w-4 h-4">
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5 mb-0.5">
+                      <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-50 text-rose-700 border border-rose-200">🔥 活動現折 $1,000</span>
+                      <span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">活動現折 $1,000</span>
+                      <h5 class="font-bold text-sm text-stone-900">一日男友：8 小時約會方案</h5>
+                    </div>
+                    <p class="text-[11px] text-stone-500 leading-relaxed max-w-md">【服務內容】約會、吃飯、一起旅遊、聚會陪同、商業應酬。原價 $9,000，現在活動折扣 $1,000！享受完整大半天的深情專屬約會。</p>
+                    <div class="text-[10px] text-stone-400 mt-1 flex items-center gap-3">
+                      <span><i class="far fa-clock text-amber-600 mr-0.5"></i> 8 小時 (480 分鐘)</span>
+                      <span><i class="fas fa-heart text-rose-500 mr-0.5"></i> 約會 / 吃飯 / 一起旅遊 / 聚會陪同 / 商業應酬</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right flex-shrink-0 pl-3">
+                  <span class="text-[11px] text-stone-400 line-through block">NT$ 9,000</span>
+                  <span class="text-base font-bold text-amber-700 font-mono">NT$ 8,000</span>
+                </div>
+              </div>
+
+              <!-- 一日男友：12 小時全日方案 -->
+              <div class="service-card p-3.5 rounded-xl border border-stone-200 bg-white hover:border-amber-300 transition-all cursor-pointer flex justify-between items-center" data-id="srv_bf_12h">
+                <div class="flex items-start gap-3">
+                  <div class="mt-0.5">
+                    <input type="radio" name="srv_radio" class="accent-amber-600 w-4 h-4">
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5 mb-0.5">
+                      <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-50 text-rose-700 border border-rose-200">💎 活動現折 $2,000</span>
+                      <span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">活動現折 $2,000</span>
+                      <h5 class="font-bold text-sm text-stone-900">一日男友：12 小時全日方案</h5>
+                    </div>
+                    <p class="text-[11px] text-stone-500 leading-relaxed max-w-md">【服務內容】約會、吃飯、一起旅遊、聚會陪同、商業應酬。原價 $13,500，現在活動折扣 $2,000！整天無微不至的深情陪伴與甜蜜呵護。</p>
+                    <div class="text-[10px] text-stone-400 mt-1 flex items-center gap-3">
+                      <span><i class="far fa-clock text-amber-600 mr-0.5"></i> 12 小時 (720 分鐘)</span>
+                      <span><i class="fas fa-heart text-rose-500 mr-0.5"></i> 約會 / 吃飯 / 一起旅遊 / 聚會陪同 / 商業應酬</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right flex-shrink-0 pl-3">
+                  <span class="text-[11px] text-stone-400 line-through block">NT$ 13,500</span>
+                  <span class="text-base font-bold text-amber-700 font-mono">NT$ 11,500</span>
+                </div>
+              </div>
             </div>
           </div>
 

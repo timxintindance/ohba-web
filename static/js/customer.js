@@ -26,39 +26,119 @@ document.addEventListener('DOMContentLoaded', async () => {
 // 1. 取得全域配置
 async function fetchConfig() {
   try {
-    let res = await fetch('/api/config');
-    if (!res.ok) res = await fetch('data/pricing.json?v=' + Date.now());
-    const data = await res.json();
-    if (data.line_bot_id) lineBotId = data.line_bot_id;
-  } catch (e) {
-    try {
-      const res2 = await fetch('data/pricing.json?v=' + Date.now());
+    const res = await fetch('data/pricing.json?v=' + Date.now());
+    if (res.ok) {
+      const data = await res.json();
+      if (data.line_bot_id) lineBotId = data.line_bot_id;
+      return;
+    }
+  } catch (e) {}
+  try {
+    const res2 = await fetch('/api/config');
+    if (res2.ok) {
       const data2 = await res2.json();
       if (data2.line_bot_id) lineBotId = data2.line_bot_id;
-    } catch (err) {
-      lineBotId = '@973sfpws';
     }
+  } catch (err) {
+    lineBotId = '@973sfpws';
   }
 }
 
-// 2. 載入並渲染服務方案
+// 2. 載入並渲染服務方案 (附帶永久內嵌備援，確保 100% 永不空白)
+const DEFAULT_SERVICES_BACKUP = [
+  {
+    "id": "srv_classic_90",
+    "name": "經典課程",
+    "category": "舒緩按摩",
+    "duration_min": 90,
+    "price_original": 2800,
+    "price": 2400,
+    "tag": "經典推薦",
+    "target": "工作疲勞、肩頸緊繃、需要扎實舒緩的女性",
+    "desc": "會以完整的指壓及油壓為主。"
+  },
+  {
+    "id": "srv_premium_120",
+    "name": "高級課程",
+    "category": "舒緩按摩",
+    "duration_min": 120,
+    "price_original": 4200,
+    "price": 3600,
+    "tag": "👍 招牌人氣推薦",
+    "target": "渴望深度極致放鬆、調理子宮與深層身心療癒的女性",
+    "desc": "除了指壓及油壓以外，加入精油體推（身體挑逗），氛圍帶動，以及深層組織按摩(著重在骨盆底肌、女性子宮的放鬆)。"
+  },
+  {
+    "id": "srv_bf_2h",
+    "name": "一日男友：2 小時體驗方案",
+    "category": "一日男友",
+    "duration_min": 120,
+    "price_original": 3600,
+    "price": 3200,
+    "tag": "💖 初次體驗",
+    "target": "約會 / 吃飯 / 一起旅遊 / 聚會陪同 / 商業應酬",
+    "desc": "【服務內容】約會、吃飯、一起旅遊、聚會陪同、商業應酬。2小時初步體驗帥氣男師溫柔體貼陪伴。"
+  },
+  {
+    "id": "srv_bf_4h",
+    "name": "一日男友：4 小時基本方案",
+    "category": "一日男友",
+    "duration_min": 240,
+    "price_original": 5000,
+    "price": 4500,
+    "tag": "💖 熱門基本款",
+    "target": "約會 / 吃飯 / 一起旅遊 / 聚會陪同 / 商業應酬",
+    "desc": "【服務內容】約會、吃飯、一起旅遊、聚會陪同、商業應酬。4小時充裕時間漫步約會、看電影或聚會相伴。"
+  },
+  {
+    "id": "srv_bf_8h",
+    "name": "一日男友：8 小時約會方案",
+    "category": "一日男友",
+    "duration_min": 480,
+    "price_original": 9000,
+    "price": 8000,
+    "discount_text": "活動現折 $1,000",
+    "tag": "🔥 活動現折 $1,000",
+    "target": "約會 / 吃飯 / 一起旅遊 / 聚會陪同 / 商業應酬",
+    "desc": "【服務內容】約會、吃飯、一起旅遊、聚會陪同、商業應酬。原價 $9,000，現在活動折扣 $1,000！享受完整大半天的深情專屬約會。"
+  },
+  {
+    "id": "srv_bf_12h",
+    "name": "一日男友：12 小時全日方案",
+    "category": "一日男友",
+    "duration_min": 720,
+    "price_original": 13500,
+    "price": 11500,
+    "discount_text": "活動現折 $2,000",
+    "tag": "💎 活動現折 $2,000",
+    "target": "約會 / 吃飯 / 一起旅遊 / 聚會陪同 / 商業應酬",
+    "desc": "【服務內容】約會、吃飯、一起旅遊、聚會陪同、商業應酬。原價 $13,500，現在活動折扣 $2,000！整天無微不至的深情陪伴與甜蜜呵護。"
+  }
+];
+
 async function loadServices() {
   try {
-    let res = await fetch('/api/services');
-    if (!res.ok) res = await fetch('data/services.json?v=' + Date.now());
-    const data = await res.json();
-    allServices = data.services || (Array.isArray(data) ? data : []);
-    renderServices();
-  } catch (e) {
-    try {
-      const res2 = await fetch('data/services.json?v=' + Date.now());
-      const data2 = await res2.json();
-      allServices = data2.services || (Array.isArray(data2) ? data2 : []);
+    const res = await fetch('data/services.json?v=' + Date.now());
+    if (res.ok) {
+      const data = await res.json();
+      allServices = Array.isArray(data) ? data : (data.services || DEFAULT_SERVICES_BACKUP);
       renderServices();
-    } catch (err) {
-      console.error('Failed to load services:', err);
+      return;
     }
-  }
+  } catch (e) {}
+
+  try {
+    const res2 = await fetch('/api/services');
+    if (res2.ok) {
+      const data2 = await res2.json();
+      allServices = data2.services || DEFAULT_SERVICES_BACKUP;
+      renderServices();
+      return;
+    }
+  } catch (err) {}
+
+  allServices = DEFAULT_SERVICES_BACKUP;
+  renderServices();
 }
 
 window.filterServices = function(cat) {
@@ -147,28 +227,27 @@ function renderServices() {
 // 3. 載入並渲染師傅清單
 async function loadMasters() {
   try {
-    let res = await fetch('/api/masters');
-    if (!res.ok) res = await fetch('data/masters_profile.json?v=' + Date.now());
-    const data = await res.json();
-    allMasters = data.masters || (Array.isArray(data) ? data : []);
-    const existingCards = document.querySelectorAll('#masters-grid .master-card');
-    if (existingCards.length === 0) {
+    const res = await fetch('data/masters_profile.json?v=' + Date.now());
+    if (res.ok) {
+      const data = await res.json();
+      allMasters = Array.isArray(data) ? data : (data.masters || []);
       renderMasters();
-    }
-    populateMasterSelect();
-  } catch (e) {
-    try {
-      const res2 = await fetch('data/masters_profile.json?v=' + Date.now());
-      const data2 = await res2.json();
-      allMasters = data2.masters || (Array.isArray(data2) ? data2 : []);
-      const existingCards = document.querySelectorAll('#masters-grid .master-card');
-      if (existingCards.length === 0) {
-        renderMasters();
-      }
       populateMasterSelect();
-    } catch (err) {
-      console.error('Failed to load masters:', err);
+      return;
     }
+  } catch (e) {}
+
+  try {
+    const res2 = await fetch('/api/masters');
+    if (res2.ok) {
+      const data2 = await res2.json();
+      allMasters = data2.masters || [];
+      renderMasters();
+      populateMasterSelect();
+      return;
+    }
+  } catch (err) {
+    console.error('Failed to load masters:', err);
   }
 }
 
@@ -217,7 +296,9 @@ function renderMasters() {
     }
 
     const card = document.createElement('div');
-    card.className = 'glass-card glass-card-interactive flex flex-col overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs';
+    card.className = 'master-card glass-card glass-card-interactive flex flex-col overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs';
+    card.dataset.region = m.region || '';
+    card.dataset.isBf = (m.is_date_boyfriend || (m.regions && m.regions.includes('一日男友')) || (m.region && m.region.includes('一日男友'))) ? 'true' : 'false';
 
     card.innerHTML = `
       <!-- 輪播相簿容器 (4:5 滿版直式照片) -->
@@ -295,6 +376,12 @@ window.filterRegion = function(reg) {
         card.style.display = '';
       } else if (reg === '一日男友') {
         card.style.display = (isBf || cardReg.includes('一日男友')) ? '' : 'none';
+      } else if (reg === '雙北' || reg === '台北' || reg.includes('台北') || reg.includes('雙北')) {
+        card.style.display = (cardReg.includes('雙北') || cardReg.includes('台北')) ? '' : 'none';
+      } else if (reg.includes('台中')) {
+        card.style.display = cardReg.includes('台中') ? '' : 'none';
+      } else if (reg.includes('高雄')) {
+        card.style.display = cardReg.includes('高雄') ? '' : 'none';
       } else {
         card.style.display = cardReg.includes(reg) ? '' : 'none';
       }
