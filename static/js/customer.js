@@ -186,10 +186,6 @@ function renderServices() {
         </div>
         <div>
           <div class="flex items-center gap-1.5 mb-0.5">
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isBf ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-amber-50 text-amber-800 border border-amber-200'}">
-              ${srv.tag || srv.category}
-            </span>
-            ${srv.discount_text ? `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">${srv.discount_text}</span>` : ''}
             <h5 class="font-bold text-sm text-stone-900">${srv.name}</h5>
           </div>
           <p class="text-[11px] text-stone-500 leading-relaxed max-w-md">${srv.desc}</p>
