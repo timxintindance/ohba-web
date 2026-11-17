@@ -1642,14 +1642,15 @@ function renderMasters() {
   }
 
   list.forEach((m, idx) => {
-    const photos = m.images && m.images.length > 0 ? m.images : [m.avatar];
+    const rawPhotos = m.images && m.images.length > 0 ? m.images : [m.avatar];
+    const photos = rawPhotos.map(p => (p && p.startsWith('/')) ? p.slice(1) : (p || 'static/masters/taipei/Ace.jpg'));
     const picsJson = encodeURIComponent(JSON.stringify(photos));
 
     let imagesHtml = '';
     photos.forEach((pic, pIdx) => {
       imagesHtml += `
         <div class="relative w-full h-full min-w-full flex-shrink-0 snap-center cursor-pointer overflow-hidden bg-stone-100" onclick="openLightbox('${picsJson}', ${pIdx})" style="width: 100%; height: 100%;">
-          <img src="${pic}" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" alt="${m.name}" style="width: 100%; height: 100%; display: block;" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='/static/masters/taipei/Ace.jpg';">
+          <img src="${pic}" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" alt="${m.name}" style="width: 100%; height: 100%; display: block;" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='static/masters/taipei/Ace.jpg';">
         </div>
       `;
     });
@@ -1996,7 +1997,8 @@ async function loadSlotsForDate(dateStr) {
   if (!container) return;
   container.innerHTML = '<div class="col-span-full py-8 text-center text-xs text-stone-500"><i class="fas fa-spinner fa-spin mr-1 text-amber-600"></i> 即時連線時段中...</div>';
 
-  function generate48Slots() {
+  try {
+    function generate48Slots() {
     const list = [];
     for (let h = 0; h < 24; h++) {
       const hh = String(h).padStart(2, '0');
