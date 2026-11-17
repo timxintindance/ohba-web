@@ -224,33 +224,1401 @@ function renderServices() {
   });
 }
 
+// 🌸 44 位精選師傅完整名冊內嵌備援 (確保 0 延遲、永不空白)
+const EMBEDDED_MASTERS = [
+  {
+    "name": "Calvin",
+    "region": "雙北 / 一日男友",
+    "regions": [
+      "雙北",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 184,
+    "weight": 82,
+    "age": 25,
+    "title": "人氣男師 · 一日男友",
+    "tags": [
+      "一日男友首選",
+      "成熟穩重",
+      "直率坦誠",
+      "觀察入微"
+    ],
+    "bio": "身形標準 (184cm/82kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
+    "avatar": "/static/masters/date_club/Calvin.jpg",
+    "images": [
+      "/static/masters/date_club/Calvin.jpg",
+      "/static/masters/taipei/Calvin.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "指壓油壓深度放鬆",
+      "深層筋膜釋壓"
+    ],
+    "rating": 10.0,
+    "review_count": 46,
+    "id": 1
+  },
+  {
+    "name": "Circle",
+    "region": "雙北 / 一日男友",
+    "regions": [
+      "雙北",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 177,
+    "weight": 75,
+    "age": 24,
+    "title": "人氣男師 · 一日男友",
+    "tags": [
+      "一日男友首選",
+      "熱心助人",
+      "耐心傾聽",
+      "活潑開朗"
+    ],
+    "bio": "身形標準 (177cm/75kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
+    "avatar": "/static/masters/date_club/Circle.jpg",
+    "images": [
+      "/static/masters/date_club/Circle.jpg",
+      "/static/masters/taipei/Circle.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "指壓油壓深度放鬆",
+      "深層筋膜釋壓"
+    ],
+    "rating": 10.0,
+    "review_count": 45,
+    "id": 2
+  },
+  {
+    "name": "Finn",
+    "region": "雙北 / 一日男友",
+    "regions": [
+      "雙北",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 182,
+    "weight": 70,
+    "age": 34,
+    "title": "人氣男師 · 一日男友",
+    "tags": [
+      "一日男友首選",
+      "體貼暖心",
+      "聊天舒服",
+      "相處有趣"
+    ],
+    "bio": "身形標準 (182cm/70kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
+    "avatar": "/static/masters/date_club/Finn.jpg",
+    "images": [
+      "/static/masters/date_club/Finn.jpg",
+      "/static/masters/taipei/Finn.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "指壓油壓深度放鬆",
+      "深層筋膜釋壓"
+    ],
+    "rating": 10.0,
+    "review_count": 40,
+    "id": 3
+  },
+  {
+    "name": "Tyler",
+    "region": "雙北 / 一日男友",
+    "regions": [
+      "雙北",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 175,
+    "weight": 70,
+    "age": 28,
+    "title": "人氣男師 · 一日男友",
+    "tags": [
+      "一日男友首選",
+      "精緻紳士",
+      "深邃立體",
+      "溫柔健談"
+    ],
+    "bio": "身形標準 (175cm/70kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
+    "avatar": "/static/masters/date_club/Tyler.jpg",
+    "images": [
+      "/static/masters/date_club/Tyler.jpg",
+      "/static/masters/taipei/Tyler.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "指壓油壓深度放鬆",
+      "深層筋膜釋壓"
+    ],
+    "rating": 10.0,
+    "review_count": 49,
+    "id": 4
+  },
+  {
+    "name": "Vito",
+    "region": "雙北 / 一日男友",
+    "regions": [
+      "雙北",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 186,
+    "weight": 70,
+    "age": 21,
+    "title": "人氣男師 · 一日男友",
+    "tags": [
+      "一日男友首選"
+    ],
+    "bio": "身形標準 (186cm/70kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
+    "avatar": "/static/masters/date_club/Vito.jpg",
+    "images": [
+      "/static/masters/date_club/Vito.jpg",
+      "/static/masters/taipei/Vito.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "指壓油壓深度放鬆",
+      "深層筋膜釋壓"
+    ],
+    "rating": 10.0,
+    "review_count": 42,
+    "id": 5
+  },
+  {
+    "name": "Wayne",
+    "region": "雙北 / 一日男友",
+    "regions": [
+      "雙北",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 177,
+    "weight": 68,
+    "age": 21,
+    "title": "人氣男師 · 一日男友",
+    "tags": [
+      "一日男友首選"
+    ],
+    "bio": "身形標準 (177cm/68kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
+    "avatar": "/static/masters/date_club/Wayne.jpg",
+    "images": [
+      "/static/masters/date_club/Wayne.jpg",
+      "/static/masters/taipei/Wayne.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "指壓油壓深度放鬆",
+      "深層筋膜釋壓"
+    ],
+    "rating": 10.0,
+    "review_count": 42,
+    "id": 6
+  },
+  {
+    "name": "Alan",
+    "region": "台中",
+    "regions": [
+      "台中"
+    ],
+    "is_date_boyfriend": false,
+    "height": 176,
+    "weight": 73,
+    "age": 28,
+    "title": "台中駐點 · 舒緩芳療男師",
+    "tags": [
+      "陽光親切",
+      "手法純熟",
+      "溫和健談",
+      "台中人氣"
+    ],
+    "bio": "台中地區專屬服務芳療男師 (176cm/73kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
+    "avatar": "/static/masters/taichung/Alan.jpg",
+    "images": [
+      "/static/masters/taichung/Alan.jpg"
+    ],
+    "specialties": [
+      "指壓油壓雙重手法",
+      "全身深層油推",
+      "肩頸痠痛釋放"
+    ],
+    "rating": 9.9,
+    "review_count": 36,
+    "id": 7
+  },
+  {
+    "name": "Frank",
+    "region": "台中 / 高雄",
+    "regions": [
+      "台中",
+      "高雄",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 177,
+    "weight": 70,
+    "age": 25,
+    "title": "人氣男師 · 台中/高雄駐點",
+    "tags": [
+      "陽光親切",
+      "手法純熟",
+      "溫和健談",
+      "台中人氣"
+    ],
+    "bio": "台中地區專屬服務芳療男師 (177cm/70kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
+    "avatar": "/static/masters/kaohsiung/Frank.jpg",
+    "images": [
+      "/static/masters/kaohsiung/Frank.jpg",
+      "/static/masters/taichung/Frank.jpg"
+    ],
+    "specialties": [
+      "指壓油壓雙重手法",
+      "全身深層油推",
+      "肩頸痠痛釋放"
+    ],
+    "rating": 9.9,
+    "review_count": 33,
+    "id": 8
+  },
+  {
+    "name": "HANK",
+    "region": "台中",
+    "regions": [
+      "台中"
+    ],
+    "is_date_boyfriend": false,
+    "height": 183,
+    "weight": 88,
+    "age": 27,
+    "title": "台中駐點 · 舒緩芳療男師",
+    "tags": [
+      "陽光親切",
+      "手法純熟",
+      "溫和健談",
+      "台中人氣"
+    ],
+    "bio": "台中地區專屬服務芳療男師 (183cm/88kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
+    "avatar": "/static/masters/taichung/HANK.jpg",
+    "images": [
+      "/static/masters/taichung/HANK.jpg"
+    ],
+    "specialties": [
+      "指壓油壓雙重手法",
+      "全身深層油推",
+      "肩頸痠痛釋放"
+    ],
+    "rating": 9.9,
+    "review_count": 35,
+    "id": 9
+  },
+  {
+    "name": "LG",
+    "region": "台中",
+    "regions": [
+      "台中"
+    ],
+    "is_date_boyfriend": false,
+    "height": 176,
+    "weight": 74,
+    "age": 26,
+    "title": "台中駐點 · 舒緩芳療男師",
+    "tags": [
+      "陽光親切",
+      "手法純熟",
+      "溫和健談",
+      "台中人氣"
+    ],
+    "bio": "台中地區專屬服務芳療男師 (176cm/74kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
+    "avatar": "/static/masters/taichung/LG.jpg",
+    "images": [
+      "/static/masters/taichung/LG.jpg"
+    ],
+    "specialties": [
+      "指壓油壓雙重手法",
+      "全身深層油推",
+      "肩頸痠痛釋放"
+    ],
+    "rating": 9.9,
+    "review_count": 34,
+    "id": 10
+  },
+  {
+    "name": "Nat",
+    "region": "台中",
+    "regions": [
+      "台中"
+    ],
+    "is_date_boyfriend": false,
+    "height": 176,
+    "weight": 79,
+    "age": 30,
+    "title": "台中駐點 · 舒緩芳療男師",
+    "tags": [
+      "陽光親切",
+      "手法純熟",
+      "溫和健談",
+      "台中人氣"
+    ],
+    "bio": "台中地區專屬服務芳療男師 (176cm/79kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
+    "avatar": "/static/masters/taichung/Nat.jpg",
+    "images": [
+      "/static/masters/taichung/Nat.jpg"
+    ],
+    "specialties": [
+      "指壓油壓雙重手法",
+      "全身深層油推",
+      "肩頸痠痛釋放"
+    ],
+    "rating": 9.9,
+    "review_count": 38,
+    "id": 11
+  },
+  {
+    "name": "RJ",
+    "region": "台中",
+    "regions": [
+      "台中"
+    ],
+    "is_date_boyfriend": false,
+    "height": 176,
+    "weight": 60,
+    "age": 31,
+    "title": "台中駐點 · 舒緩芳療男師",
+    "tags": [
+      "陽光親切",
+      "手法純熟",
+      "溫和健談",
+      "台中人氣"
+    ],
+    "bio": "台中地區專屬服務芳療男師 (176cm/60kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
+    "avatar": "/static/masters/taichung/RJ.jpg",
+    "images": [
+      "/static/masters/taichung/RJ.jpg"
+    ],
+    "specialties": [
+      "指壓油壓雙重手法",
+      "全身深層油推",
+      "肩頸痠痛釋放"
+    ],
+    "rating": 9.9,
+    "review_count": 39,
+    "id": 12
+  },
+  {
+    "name": "SS",
+    "region": "台中",
+    "regions": [
+      "台中"
+    ],
+    "is_date_boyfriend": false,
+    "height": 178,
+    "weight": 66,
+    "age": 29,
+    "title": "台中駐點 · 舒緩芳療男師",
+    "tags": [
+      "陽光親切",
+      "手法純熟",
+      "溫和健談",
+      "台中人氣"
+    ],
+    "bio": "台中地區專屬服務芳療男師 (178cm/66kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
+    "avatar": "/static/masters/taichung/SS.jpg",
+    "images": [
+      "/static/masters/taichung/SS.jpg"
+    ],
+    "specialties": [
+      "指壓油壓雙重手法",
+      "全身深層油推",
+      "肩頸痠痛釋放"
+    ],
+    "rating": 9.9,
+    "review_count": 37,
+    "id": 13
+  },
+  {
+    "name": "SUN",
+    "region": "台中",
+    "regions": [
+      "台中"
+    ],
+    "is_date_boyfriend": false,
+    "height": 180,
+    "weight": 60,
+    "age": 28,
+    "title": "台中駐點 · 舒緩芳療男師",
+    "tags": [
+      "陽光親切",
+      "手法純熟",
+      "溫和健談",
+      "台中人氣"
+    ],
+    "bio": "台中地區專屬服務芳療男師 (180cm/60kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
+    "avatar": "/static/masters/taichung/SUN.jpg",
+    "images": [
+      "/static/masters/taichung/SUN.jpg"
+    ],
+    "specialties": [
+      "指壓油壓雙重手法",
+      "全身深層油推",
+      "肩頸痠痛釋放"
+    ],
+    "rating": 9.9,
+    "review_count": 36,
+    "id": 14
+  },
+  {
+    "name": "Ace",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 175,
+    "weight": 65,
+    "age": 32,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (175cm/65kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Ace.jpg",
+    "images": [
+      "/static/masters/taipei/Ace.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 39,
+    "id": 15
+  },
+  {
+    "name": "Bryant",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 180,
+    "weight": 74,
+    "age": 26,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (180cm/74kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Bryant.jpg",
+    "images": [
+      "/static/masters/taipei/Bryant.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 33,
+    "id": 16
+  },
+  {
+    "name": "Charles",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 179,
+    "weight": 77,
+    "age": 26,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (179cm/77kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Charles.jpg",
+    "images": [
+      "/static/masters/taipei/Charles.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 33,
+    "id": 17
+  },
+  {
+    "name": "Eric",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 175,
+    "weight": 75,
+    "age": 35,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (175cm/75kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Eric.jpg",
+    "images": [
+      "/static/masters/taipei/Eric.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 42,
+    "id": 18
+  },
+  {
+    "name": "Ethan",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 175,
+    "weight": 66,
+    "age": 26,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (175cm/66kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Ethan.jpg",
+    "images": [
+      "/static/masters/taipei/Ethan.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 33,
+    "id": 19
+  },
+  {
+    "name": "ICE",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 191,
+    "weight": 81,
+    "age": 28,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (191cm/81kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/ICE.jpg",
+    "images": [
+      "/static/masters/taipei/ICE.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 35,
+    "id": 20
+  },
+  {
+    "name": "J",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 175,
+    "weight": 63,
+    "age": 33,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (175cm/63kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/J.jpg",
+    "images": [
+      "/static/masters/taipei/J.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 40,
+    "id": 21
+  },
+  {
+    "name": "Jax",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 172,
+    "weight": 56,
+    "age": 26,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (172cm/56kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Jax.jpg",
+    "images": [
+      "/static/masters/taipei/Jax.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 33,
+    "id": 22
+  },
+  {
+    "name": "Jay",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 175,
+    "weight": 73,
+    "age": 29,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (177cm/73kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Jay.jpg",
+    "images": [
+      "/static/masters/taipei/Jay.jpg",
+      "/static/masters/taipei/Jay 2.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 36,
+    "id": 23
+  },
+  {
+    "name": "Kevin",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 175,
+    "weight": 66,
+    "age": 23,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (175cm/66kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Kevin.jpg",
+    "images": [
+      "/static/masters/taipei/Kevin.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 55,
+    "id": 24
+  },
+  {
+    "name": "P",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 178,
+    "weight": 70,
+    "age": 30,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (178cm/70kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/P.jpg",
+    "images": [
+      "/static/masters/taipei/P.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 37,
+    "id": 25
+  },
+  {
+    "name": "R",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 188,
+    "weight": 86,
+    "age": 30,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (188cm/86kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/R.jpg",
+    "images": [
+      "/static/masters/taipei/R.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 37,
+    "id": 26
+  },
+  {
+    "name": "RJ",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 176,
+    "weight": 60,
+    "age": 31,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (176cm/60kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/RJ.jpg",
+    "images": [
+      "/static/masters/taipei/RJ.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 38,
+    "id": 27
+  },
+  {
+    "name": "RY",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 176,
+    "weight": 81,
+    "age": 43,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (176cm/81kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/RY.jpg",
+    "images": [
+      "/static/masters/taipei/RY.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 50,
+    "id": 28
+  },
+  {
+    "name": "Rex",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 180,
+    "weight": 75,
+    "age": 28,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (180cm/75kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Rex.jpg",
+    "images": [
+      "/static/masters/taipei/Rex.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 35,
+    "id": 29
+  },
+  {
+    "name": "Ryan",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 182,
+    "weight": 80,
+    "age": 34,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (182cm/80kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Ryan.jpg",
+    "images": [
+      "/static/masters/taipei/Ryan.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 41,
+    "id": 30
+  },
+  {
+    "name": "S",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 180,
+    "weight": 86,
+    "age": 27,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (180cm/86kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/S_1.jpg",
+    "images": [
+      "/static/masters/taipei/S_1.jpg",
+      "/static/masters/taipei/S_2.jpg",
+      "/static/masters/taipei/S_2.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 34,
+    "id": 31
+  },
+  {
+    "name": "Sunny",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 182,
+    "weight": 87,
+    "age": 27,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (182cm/87kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Sunny.jpg",
+    "images": [
+      "/static/masters/taipei/Sunny.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 34,
+    "id": 32
+  },
+  {
+    "name": "Taeyang",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 175,
+    "weight": 73,
+    "age": 27,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (175cm/73kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Taeyang.jpg",
+    "images": [
+      "/static/masters/taipei/Taeyang.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 34,
+    "id": 33
+  },
+  {
+    "name": "Venson",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 172,
+    "weight": 65,
+    "age": 20,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (172cm/65kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Venson.jpg",
+    "images": [
+      "/static/masters/taipei/Venson.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 10.0,
+    "review_count": 52,
+    "id": 34
+  },
+  {
+    "name": "Wei",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 182,
+    "weight": 70,
+    "age": 29,
+    "title": "雙北首席 · 舒緩芳療男師",
+    "tags": [
+      "紳士體貼",
+      "手法細膩",
+      "力道可調",
+      "雙北推薦"
+    ],
+    "bio": "雙北地區資深男師 (182cm/70kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
+    "avatar": "/static/masters/taipei/Wei.jpg",
+    "images": [
+      "/static/masters/taipei/Wei.jpg"
+    ],
+    "specialties": [
+      "高級指油壓芳療",
+      "深層筋膜舒緩",
+      "身體全效油推"
+    ],
+    "rating": 9.9,
+    "review_count": 36,
+    "id": 35
+  },
+  {
+    "name": "TP",
+    "region": "高雄",
+    "regions": [
+      "高雄",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 180,
+    "weight": 80,
+    "age": 32,
+    "title": "人氣男師 · 高雄駐點",
+    "tags": [
+      "一日男友",
+      "沉穩紳士",
+      "身材結實",
+      "手法細緻"
+    ],
+    "bio": "身形挺拔勻稱 (180cm/80kg)，性格沉穩紳士。擅長傾聽陪伴、溫潤推拿舒壓，深受女性貴賓高度好評與指名。",
+    "avatar": "/static/masters/kaohsiung/TP.jpg",
+    "images": [
+      "/static/masters/kaohsiung/TP.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "指壓油壓深度放鬆",
+      "深層筋膜釋壓"
+    ],
+    "rating": 9.9,
+    "review_count": 32,
+    "id": 36
+  },
+  {
+    "name": "MAX",
+    "region": "高雄",
+    "regions": [
+      "高雄",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 178,
+    "weight": 75,
+    "age": 30,
+    "title": "人氣男師 · 高雄駐點",
+    "tags": [
+      "一日男友",
+      "溫柔細膩",
+      "帥氣型男",
+      "深層釋壓"
+    ],
+    "bio": "標準修長身形 (178cm/75kg)，性格細膩溫柔。擅長約會伴遊與深層放鬆，營造專屬浪漫舒適時光。",
+    "avatar": "/static/masters/kaohsiung/MAX.jpg",
+    "images": [
+      "/static/masters/kaohsiung/MAX.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "深層筋膜釋壓",
+      "精油舒壓"
+    ],
+    "rating": 10.0,
+    "review_count": 28,
+    "id": 37
+  },
+  {
+    "name": "ZEUS",
+    "region": "高雄",
+    "regions": [
+      "高雄",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 179,
+    "weight": 78,
+    "age": 32,
+    "title": "人氣男師 · 高雄駐點",
+    "tags": [
+      "一日男友",
+      "陽光健美",
+      "運動筋膜",
+      "專業舒壓"
+    ],
+    "bio": "健美結實身材 (179cm/78kg)，陽光成熟魅力。手法剛柔並濟，擅長運動釋壓與貼心陪伴。",
+    "avatar": "/static/masters/kaohsiung/ZEUS.jpg",
+    "images": [
+      "/static/masters/kaohsiung/ZEUS.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "運動深層指壓",
+      "精油放鬆"
+    ],
+    "rating": 10.0,
+    "review_count": 35,
+    "id": 38
+  },
+  {
+    "name": "QQ",
+    "region": "高雄",
+    "regions": [
+      "高雄",
+      "一日男友"
+    ],
+    "is_date_boyfriend": true,
+    "height": 185,
+    "weight": 78,
+    "age": 24,
+    "title": "人氣男師 · 高雄駐點",
+    "tags": [
+      "一日男友",
+      "高挑帥哥",
+      "陽光親切",
+      "溫柔貼心"
+    ],
+    "bio": "高挑挺拔陽光身形 (185cm/78kg)，性格親切開朗。擅長溫柔陪伴與經絡放鬆，深受貴賓青睞。",
+    "avatar": "/static/masters/kaohsiung/QQ.jpg",
+    "images": [
+      "/static/masters/kaohsiung/QQ.jpg"
+    ],
+    "specialties": [
+      "一日男友約會陪伴",
+      "經絡油壓舒緩",
+      "溫柔陪伴"
+    ],
+    "rating": 9.9,
+    "review_count": 30,
+    "id": 39
+  },
+  {
+    "id": 40,
+    "name": "Justin",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 172,
+    "weight": 63,
+    "age": 28,
+    "title": "專屬芳療師",
+    "tags": [
+      "陽光健美",
+      "深層放鬆"
+    ],
+    "bio": "",
+    "avatar": "/static/masters/taipei/Justin.jpg",
+    "images": [
+      "/static/masters/taipei/Justin.jpg"
+    ],
+    "specialties": [
+      "油壓舒壓",
+      "指壓放鬆"
+    ],
+    "rating": 10.0,
+    "review_count": 35
+  },
+  {
+    "id": 41,
+    "name": "Lin",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 175,
+    "weight": 63,
+    "age": 27,
+    "title": "專屬芳療師",
+    "tags": [
+      "溫柔細膩",
+      "親切體貼"
+    ],
+    "bio": "",
+    "avatar": "/static/masters/taipei/Lin.jpg",
+    "images": [
+      "/static/masters/taipei/Lin.jpg"
+    ],
+    "specialties": [
+      "油壓舒壓",
+      "指壓放鬆"
+    ],
+    "rating": 10.0,
+    "review_count": 32
+  },
+  {
+    "id": 42,
+    "name": "Luc",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 185,
+    "weight": 75,
+    "age": 35,
+    "title": "專屬芳療師",
+    "tags": [
+      "肌肉健美",
+      "深層指壓"
+    ],
+    "bio": "",
+    "avatar": "/static/masters/taipei/Luc.jpg",
+    "images": [
+      "/static/masters/taipei/Luc.jpg"
+    ],
+    "specialties": [
+      "油壓舒壓",
+      "指壓放鬆"
+    ],
+    "rating": 10.0,
+    "review_count": 38
+  },
+  {
+    "id": 43,
+    "name": "Scott",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 179,
+    "weight": 76,
+    "age": 27,
+    "title": "專屬芳療師",
+    "tags": [
+      "陽光帥氣",
+      "手法細緻"
+    ],
+    "bio": "",
+    "avatar": "/static/masters/taipei/Scott.jpg",
+    "images": [
+      "/static/masters/taipei/Scott.jpg"
+    ],
+    "specialties": [
+      "油壓舒壓",
+      "指壓放鬆"
+    ],
+    "rating": 10.0,
+    "review_count": 30
+  },
+  {
+    "name": "Allen",
+    "region": "雙北",
+    "regions": [
+      "雙北"
+    ],
+    "is_date_boyfriend": false,
+    "height": 174,
+    "weight": 70,
+    "age": 30,
+    "title": "雙北特約 · 專業芳療師",
+    "tags": [
+      "陽光溫暖",
+      "手法細緻",
+      "親切健談",
+      "雙北特約"
+    ],
+    "bio": "身形標準 (174cm/70kg)，性格溫和親切。專精女性芳療舒壓與深層筋膜放鬆，手法沉穩細膩，備受女性貴賓喜愛。",
+    "avatar": "/static/masters/taipei/Allen.jpg",
+    "images": [
+      "/static/masters/taipei/Allen.jpg"
+    ],
+    "specialties": [
+      "深層精油SPA",
+      "全身筋膜放鬆",
+      "肩頸痠痛釋放"
+    ],
+    "rating": 9.9,
+    "review_count": 35,
+    "id": 44
+  }
+];
+
 // 3. 載入並渲染師傅清單
 async function loadMasters() {
+  // 優先使用內嵌資料即刻渲染，確保畫面 100% 絕不空白
+  if (!allMasters || allMasters.length === 0) {
+    allMasters = EMBEDDED_MASTERS;
+    renderMasters();
+    populateMasterSelect();
+  }
+
   try {
     const res = await fetch('data/masters_profile.json?v=' + Date.now());
     if (res.ok) {
       const data = await res.json();
-      allMasters = Array.isArray(data) ? data : (data.masters || []);
-      renderMasters();
-      populateMasterSelect();
+      const loaded = Array.isArray(data) ? data : (data.masters || []);
+      if (loaded.length > 0) {
+        allMasters = loaded;
+        renderMasters();
+        populateMasterSelect();
+      }
       return;
     }
   } catch (e) {}
-
-  try {
-    const res2 = await fetch('/api/masters');
-    if (res2.ok) {
-      const data2 = await res2.json();
-      allMasters = data2.masters || [];
-      renderMasters();
-      populateMasterSelect();
-      return;
-    }
-  } catch (err) {
-    console.error('Failed to load masters:', err);
-  }
 }
-
 // 師傅形象牆渲染 (WonderSpa 風格 aspect-[4/5] 卡片)
 function renderMasters() {
   const container = document.getElementById('masters-grid') || document.getElementById('masters-cards-container');
