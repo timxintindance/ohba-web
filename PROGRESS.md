@@ -55,6 +55,22 @@ Opa-line-ai-bot-web/
 
 > **填寫規範**：請每次完成任務後，將最新的一筆日誌加在**本區塊的最上方**。
 
+### [2026-11-17 16:13] - 徹底根絕載入延遲：44 位師傅與 6 項服務直入客戶端內嵌與 HTML 預渲染
+- **操作者**：Antigravity (電腦端)
+- **本次改動內容**：
+  1. **師傅名冊 100% 秒開**：將 44 位精選男師資料直接內嵌於 [`static/js/customer.js`](./static/js/customer.js) 的 `EMBEDDED_MASTERS`，初始化時以 0 延遲同步渲染師傅形象牆與指定預約下拉選單，徹底根絕網路等待導致空白的問題。
+  2. **服務項目永久可見**：在 [`templates/index.html`](./templates/index.html) 的 `#services-grid` 內直接預先渲染 2 項舒緩按摩與 4 項一日男友方案，即使未連網亦完整展示。
+  3. **形象牆標籤對齊名冊**：標籤顯示為「全部 (44位)」、「台北舒緩按摩 (33位)」、「台中舒緩按摩 (8位)」、「高雄舒緩按摩 (5位)」、「💖 一日男友 (6位)」，並支援複合分類過濾。
+  4. 升級腳本版本至 `v=6.0`，已推送到 GitHub 遠端 [`timxintindance/ohba-web`](https://github.com/timxintindance/ohba-web)。
+- **異動檔案**：
+  - 更新：[`templates/index.html`](./templates/index.html)
+  - 更新：[`static/js/customer.js`](./static/js/customer.js)
+  - 更新：[`Opa-github-pages/index.html`](../Opa-github-pages/index.html)
+  - 更新：[`Opa-github-pages/static/js/customer.js`](../Opa-github-pages/static/js/customer.js)
+  - 更新：[`PROGRESS.md`](./PROGRESS.md)
+- **下一步待辦 / 待討論事項**：
+  - 請使用者重新整理瀏覽器驗證 44 位師傅與服務項目秒開效果。
+
 ### [2026-11-17 16:00] - 品牌名稱校正：全面由 OPA 更正為 OHBA SPA
 - **操作者**：Antigravity (電腦端)
 - **本次改動內容**：
