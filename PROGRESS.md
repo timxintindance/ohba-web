@@ -55,6 +55,23 @@ Opa-line-ai-bot-web/
 
 > **填寫規範**：請每次完成任務後，將最新的一筆日誌加在**本區塊的最上方**。
 
+### [2026-11-17 16:00] - 品牌名稱校正：全面由 OPA 更正為 OHBA SPA
+- **操作者**：Antigravity (電腦端)
+- **本次改動內容**：
+  1. 依使用者指示，將全站品牌名稱全面正名為 **`OHBA SPA`**（歐爸）：
+     - 網頁標題 Title、頂部奢雅導覽列 LOGO H1 與頁尾版權宣告均更新為 **`OHBA SPA`**。
+     - 系統預設計價配置 [`data/pricing.json`](./data/pricing.json) 與後端 API 配置 [`app.py`](./app.py) 品牌名稱正名。
+  2. 已同步推送更新至 GitHub 儲存庫 [`timxintindance/ohba-web`](https://github.com/timxintindance/ohba-web)，GitHub Pages 自動重新建置生效。
+- **異動檔案**：
+  - 更新：[`templates/index.html`](./templates/index.html)
+  - 更新：[`data/pricing.json`](./data/pricing.json)
+  - 更新：[`app.py`](./app.py)
+  - 更新：[`Opa-github-pages/index.html`](../Opa-github-pages/index.html)
+  - 更新：[`Opa-github-pages/data/pricing.json`](../Opa-github-pages/data/pricing.json)
+  - 更新：[`PROGRESS.md`](./PROGRESS.md)
+- **下一步待辦 / 待討論事項**：
+  - 協助使用者確認瀏覽器端快取清除與正式網站造訪體驗。
+
 ### [2026-11-17 15:48] - 正式網站上線：完成 GitHub Pages 靜態架構建立與部署 (ohba.ohbaspa.com.tw)
 - **操作者**：Antigravity (電腦端)
 - **本次改動內容**：
