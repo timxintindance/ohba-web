@@ -55,6 +55,23 @@ Opa-line-ai-bot-web/
 
 > **填寫規範**：請每次完成任務後，將最新的一筆日誌加在**本區塊的最上方**。
 
+### [2026-11-17 15:48] - 正式網站上線：完成 GitHub Pages 靜態架構建立與部署 (ohba.ohbaspa.com.tw)
+- **操作者**：Antigravity (電腦端)
+- **本次改動內容**：
+  1. 成功建立與男客站 `str-web`（`Str-github-pages`）完全對稱的靜態專案目錄 [`Opa-github-pages`](../Opa-github-pages)。
+  2. 強化 [`static/js/customer.js`](./static/js/customer.js)：新增本機 API 與線上靜態 JSON 檔案自動無縫切換機制（`pricing.json`、`services.json`、`masters_profile.json`、48 格全時段自動產生與 `reviews.json`）。
+  3. 配置 `CNAME` 為 `ohba.ohbaspa.com.tw`、SEO `robots.txt` 與 `sitemap.xml`。
+  4. 成功將 70 個完整網站檔案推送到 GitHub 倉庫 [`timxintindance/ohba-web`](https://github.com/timxintindance/ohba-web) 的 `main` 分支。
+  5. 透過 GitHub Pages API 正式啟動託管服務，綁定自訂子網域 `ohba.ohbaspa.com.tw`。
+- **異動檔案**：
+  - 新增：[`CNAME`](../Opa-github-pages/CNAME) (`ohba.ohbaspa.com.tw`)
+  - 新增：[`robots.txt`](../Opa-github-pages/robots.txt)、[`sitemap.xml`](../Opa-github-pages/sitemap.xml)
+  - 更新：[`static/js/customer.js`](./static/js/customer.js) (靜態/API 雙模自適應)
+  - 更新：[`templates/index.html`](./templates/index.html) (相對路徑化，升級 v=5.0)
+  - 更新：[`PROGRESS.md`](./PROGRESS.md)
+- **下一步待辦 / 待討論事項**：
+  - 引導使用者於 Wix DNS 管理後台新增 CNAME 紀錄指向 `timxintindance.github.io`。
+
 ### [2026-11-17 15:35] - 同步 Google 雲端硬碟師傅名冊 (I:\我的雲端硬碟\客戶端\女客)
 - **操作者**：Antigravity (電腦端)
 - **本次改動內容**：
