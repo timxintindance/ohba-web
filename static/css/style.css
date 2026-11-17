@@ -1,0 +1,253 @@
+/* 🌸 OPA SPA | 女性專屬帥哥按摩舒壓 — 法式輕奢沙龍淺色系樣式庫 */
+:root {
+  --bg-main: #FAF8F5;          /* 晨曦暖白 / 燕麥珍珠白 */
+  --bg-card: rgba(255, 255, 255, 0.96);
+  --bg-card-hover: #FFFFFF;
+  --gold-primary: #C59B27;     /* 頂級香檳金 */
+  --gold-dark: #9A7718;
+  --gold-light: #FBF4DE;
+  --rose-primary: #C66A5B;     /* 柔霧玫瑰金 */
+  --rose-light: #FDF3F1;
+  --text-primary: #2B2320;     /* 深石英可可黑，高雅易讀 */
+  --text-secondary: #5C4F4A;   /* 典雅深灰褐 */
+  --text-muted: #8C7E77;       /* 柔和次要文字 */
+  --line-green: #06C755;
+  --border-gold: rgba(197, 155, 39, 0.28);
+  --border-rose: rgba(198, 106, 91, 0.32);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, .brand-font {
+  font-family: 'Playfair Display', 'Noto Serif TC', serif;
+}
+
+/* 玫瑰香檳漸層深金色文字 */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #9A7718 0%, #B8860B 50%, #C66A5B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-rose-gradient {
+  background: linear-gradient(135deg, #C66A5B 0%, #D48175 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 頂級珍珠白玻璃擬態卡片 */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 6px 24px -4px rgba(90, 60, 40, 0.07), 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  border-radius: 1.25rem;
+}
+
+.glass-card:hover {
+  border-color: var(--rose-primary);
+  box-shadow: 0 10px 30px -4px rgba(198, 106, 91, 0.12);
+}
+
+/* 療程卡片選中態 */
+.service-card {
+  transition: all 0.25s ease;
+  cursor: pointer;
+  background: #FFFFFF;
+}
+
+.service-card:hover {
+  border-color: var(--rose-primary) !important;
+  transform: translateY(-2px);
+}
+
+.service-card.active {
+  border-color: var(--rose-primary) !important;
+  background: #FFF8F6 !important;
+  box-shadow: 0 8px 25px rgba(198, 106, 91, 0.18) !important;
+}
+
+/* 時段膠囊 */
+.slot-box {
+  background: #FFFFFF;
+  border: 1px solid #E8E2D9;
+  color: var(--text-primary);
+  border-radius: 0.85rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.slot-box:hover:not(.locked) {
+  border-color: var(--rose-primary);
+  background: #FFF8F6;
+  transform: translateY(-1px);
+}
+
+.slot-box.active {
+  background: linear-gradient(135deg, #FBF4DE 0%, #FDF1EE 100%) !important;
+  border-color: var(--rose-primary) !important;
+  color: var(--rose-primary) !important;
+  box-shadow: 0 0 14px rgba(198, 106, 91, 0.25) !important;
+}
+
+.slot-box.locked {
+  background: #F3EFEA !important;
+  border-color: #E8E2D9 !important;
+  color: #A39B95 !important;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* 日期橫向膠囊按鈕 */
+.date-pill {
+  transition: all 0.2s ease;
+  min-width: 68px;
+  background: #FFFFFF;
+  border: 1px solid #E8E2D9;
+  color: var(--text-secondary);
+}
+
+.date-pill:hover:not(.active) {
+  border-color: var(--gold-primary);
+  background: #FCFBF9;
+}
+
+.date-pill.active {
+  background: linear-gradient(135deg, #C59B27 0%, #B08518 100%) !important;
+  border-color: #9A7718 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 15px rgba(197, 155, 39, 0.3);
+}
+
+.date-pill.active span {
+  color: #FFFFFF !important;
+}
+
+/* 綠色 LINE 大按鈕 */
+.btn-line-submit {
+  background: #06C755;
+  color: #FFFFFF;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(6, 199, 85, 0.28);
+}
+
+.btn-line-submit:hover {
+  background: #05b34c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(6, 199, 85, 0.4);
+}
+
+/* 隱私保證 / 形象標章 */
+.safety-badge {
+  background: rgba(198, 106, 91, 0.08);
+  border: 1px solid rgba(198, 106, 91, 0.25);
+  color: #9E4D40;
+}
+
+/* 隱藏原生滾動條但保持滾動 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 步驟圓形指示節點 (Step Node) */
+.step-node {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.step-node.current {
+  background: linear-gradient(135deg, #C59B27 0%, #B08518 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(197, 155, 39, 0.35);
+}
+.step-node.completed {
+  background: #06C755;
+  color: #FFFFFF;
+}
+.step-node.pending {
+  background: #EDE8E1;
+  color: #8C7E77;
+  border: 1px solid #DFD7CC;
+}
+
+/* 師傅大圖橫向滑動輪播 (Snap Carousel) */
+.snap-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  width: 100%;
+  height: 100%;
+}
+.snap-carousel::-webkit-scrollbar {
+  display: none;
+}
+.snap-carousel > * {
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+}
+.snap-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* 輪播圓點指示器 */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.6);
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.dot.active {
+  width: 16px;
+  background: #C59B27;
+}
+
+/* 綠色 LINE 大按鈕 */
+.btn-line-dispatch {
+  background: #06C755;
+  color: #FFFFFF;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(6, 199, 85, 0.28);
+}
+.btn-line-dispatch:hover {
+  background: #05b34c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(6, 199, 85, 0.4);
+}
+
+/* 互動卡片浮起微效果 */
+.glass-card-interactive {
+  transition: all 0.25s ease;
+}
+.glass-card-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -4px rgba(90, 60, 40, 0.12);
+  border-color: var(--rose-primary);
+}

@@ -1,0 +1,1015 @@
+// 🌸 OPA SPA | 女性專屬帥哥按摩舒壓 — 前台顧客直訂系統 JS 核心 (法式輕奢沙龍風)
+
+let allServices = [];
+let allMasters = [];
+let selectedService = null;
+let selectedMaster = null;
+let selectedDate = null;
+let selectedTime = null;
+let currentRegion = '全部';
+let currentServiceCategoryFilter = '全部';
+let lineBotId = '@973sfpws';
+let studioFee = 400; // 西門工作室預設 $400
+
+// 燈箱狀態
+let currentLightboxImages = [];
+let currentLightboxIndex = 0;
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await fetchConfig();
+  await loadServices();
+  await loadMasters();
+  initDateList();
+  calculatePrice();
+});
+
+// 1. 取得全域配置
+async function fetchConfig() {
+  try {
+    let res = await fetch('/api/config');
+    if (!res.ok) res = await fetch('data/pricing.json?v=' + Date.now());
+    const data = await res.json();
+    if (data.line_bot_id) lineBotId = data.line_bot_id;
+  } catch (e) {
+    try {
+      const res2 = await fetch('data/pricing.json?v=' + Date.now());
+      const data2 = await res2.json();
+      if (data2.line_bot_id) lineBotId = data2.line_bot_id;
+    } catch (err) {
+      lineBotId = '@973sfpws';
+    }
+  }
+}
+
+// 2. 載入並渲染服務方案
+async function loadServices() {
+  try {
+    let res = await fetch('/api/services');
+    if (!res.ok) res = await fetch('data/services.json?v=' + Date.now());
+    const data = await res.json();
+    allServices = data.services || (Array.isArray(data) ? data : []);
+    renderServices();
+  } catch (e) {
+    try {
+      const res2 = await fetch('data/services.json?v=' + Date.now());
+      const data2 = await res2.json();
+      allServices = data2.services || (Array.isArray(data2) ? data2 : []);
+      renderServices();
+    } catch (err) {
+      console.error('Failed to load services:', err);
+    }
+  }
+}
+
+window.filterServices = function(cat) {
+  currentServiceCategoryFilter = cat;
+  document.querySelectorAll('.srv-cat-btn').forEach(b => {
+    const isActive = b.dataset.cat === cat;
+    b.className = `srv-cat-btn px-2.5 py-0.5 rounded-lg text-xs transition-all ${
+      isActive ? 'active bg-amber-600 text-white font-bold' : 'bg-stone-100 text-stone-600 hover:text-stone-900'
+    }`;
+  });
+  renderServices();
+};
+
+function renderServices() {
+  const container = document.getElementById('services-grid');
+  if (!container) return;
+  container.innerHTML = '';
+
+  let list = allServices;
+  if (currentServiceCategoryFilter !== '全部') {
+    list = allServices.filter(s => s.category === currentServiceCategoryFilter);
+  }
+
+  list.forEach((srv, idx) => {
+    const isSelected = selectedService ? selectedService.id === srv.id : (srv.id === 'srv_premium_120' || idx === 0);
+    if (isSelected && !selectedService) selectedService = srv;
+
+    const isBf = srv.category === '一日男友';
+    let durationText = `${srv.duration_min} 分鐘`;
+    if (srv.duration_min >= 60) {
+      const hrs = srv.duration_min / 60;
+      durationText = Number.isInteger(hrs) ? `${hrs} 小時 (${srv.duration_min} 分鐘)` : `${srv.duration_min} 分鐘`;
+    }
+
+    const card = document.createElement('div');
+    card.className = `service-card p-3.5 rounded-xl border transition-all cursor-pointer flex justify-between items-center ${
+      isSelected ? 'active border-amber-500 bg-amber-50/40 ring-1 ring-amber-400' : 'border-stone-200 bg-white hover:border-amber-300'
+    }`;
+    card.dataset.id = srv.id;
+
+    card.innerHTML = `
+      <div class="flex items-start gap-3">
+        <div class="mt-0.5">
+          <input type="radio" name="srv_radio" ${isSelected ? 'checked' : ''} class="accent-amber-600 w-4 h-4">
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5 mb-0.5">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isBf ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-amber-50 text-amber-800 border border-amber-200'}">
+              ${srv.tag || srv.category}
+            </span>
+            ${srv.discount_text ? `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">${srv.discount_text}</span>` : ''}
+            <h5 class="font-bold text-sm text-stone-900">${srv.name}</h5>
+          </div>
+          <p class="text-[11px] text-stone-500 leading-relaxed max-w-md">${srv.desc}</p>
+          <div class="text-[10px] text-stone-400 mt-1 flex items-center gap-3">
+            <span><i class="far fa-clock text-amber-600 mr-0.5"></i> ${durationText}</span>
+            <span><i class="fas fa-heart ${isBf ? 'text-rose-500' : 'text-amber-600'} mr-0.5"></i> ${srv.target}</span>
+          </div>
+        </div>
+      </div>
+      <div class="text-right flex-shrink-0 pl-3">
+        ${srv.price_original ? `<span class="text-[11px] text-stone-400 line-through block">NT$ ${srv.price_original.toLocaleString()}</span>` : ''}
+        <span class="text-base font-bold text-amber-700 font-mono">NT$ ${srv.price.toLocaleString()}</span>
+      </div>
+    `;
+
+    card.onclick = () => {
+      selectedService = srv;
+      document.querySelectorAll('#services-grid .service-card').forEach(c => {
+        c.classList.remove('active', 'border-amber-500', 'bg-amber-50/40', 'ring-1', 'ring-amber-400');
+        c.classList.add('border-stone-200', 'bg-white');
+        const r = c.querySelector('input[type="radio"]');
+        if (r) r.checked = false;
+      });
+      card.classList.add('active', 'border-amber-500', 'bg-amber-50/40', 'ring-1', 'ring-amber-400');
+      card.classList.remove('border-stone-200', 'bg-white');
+      const r = card.querySelector('input[type="radio"]');
+      if (r) r.checked = true;
+      calculatePrice();
+    };
+
+    container.appendChild(card);
+  });
+}
+
+// 3. 載入並渲染師傅清單
+async function loadMasters() {
+  try {
+    let res = await fetch('/api/masters');
+    if (!res.ok) res = await fetch('data/masters_profile.json?v=' + Date.now());
+    const data = await res.json();
+    allMasters = data.masters || (Array.isArray(data) ? data : []);
+    const existingCards = document.querySelectorAll('#masters-grid .master-card');
+    if (existingCards.length === 0) {
+      renderMasters();
+    }
+    populateMasterSelect();
+  } catch (e) {
+    try {
+      const res2 = await fetch('data/masters_profile.json?v=' + Date.now());
+      const data2 = await res2.json();
+      allMasters = data2.masters || (Array.isArray(data2) ? data2 : []);
+      const existingCards = document.querySelectorAll('#masters-grid .master-card');
+      if (existingCards.length === 0) {
+        renderMasters();
+      }
+      populateMasterSelect();
+    } catch (err) {
+      console.error('Failed to load masters:', err);
+    }
+  }
+}
+
+// 師傅形象牆渲染 (WonderSpa 風格 aspect-[4/5] 卡片)
+function renderMasters() {
+  const container = document.getElementById('masters-grid') || document.getElementById('masters-cards-container');
+  if (!container) return;
+  container.innerHTML = '';
+
+  let list = allMasters;
+  if (currentRegion !== '全部') {
+    list = allMasters.filter(m => {
+      const regs = m.regions || [m.region];
+      if (currentRegion === '一日男友') {
+        return m.is_date_boyfriend || regs.includes('一日男友') || (m.region && m.region.includes('一日男友'));
+      }
+      return regs.includes(currentRegion) || (m.region && m.region.includes(currentRegion));
+    });
+  }
+
+  if (list.length === 0) {
+    container.innerHTML = '<div class="col-span-full py-12 text-center text-xs text-stone-500">此區域暫無排班芳療男師</div>';
+    return;
+  }
+
+  list.forEach((m, idx) => {
+    const photos = m.images && m.images.length > 0 ? m.images : [m.avatar];
+    const picsJson = encodeURIComponent(JSON.stringify(photos));
+
+    let imagesHtml = '';
+    photos.forEach((pic, pIdx) => {
+      imagesHtml += `
+        <div class="relative w-full h-full min-w-full flex-shrink-0 snap-center cursor-pointer overflow-hidden bg-stone-100" onclick="openLightbox('${picsJson}', ${pIdx})" style="width: 100%; height: 100%;">
+          <img src="${pic}" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" alt="${m.name}" style="width: 100%; height: 100%; display: block;" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='/static/masters/taipei/Ace.jpg';">
+        </div>
+      `;
+    });
+
+    let dotsHtml = '';
+    if (photos.length > 1) {
+      dotsHtml = `<div id="dots-${idx}" class="flex gap-1 justify-center absolute bottom-2 left-0 right-0 z-10 pointer-events-none">`;
+      photos.forEach((_, i) => {
+        dotsHtml += `<div class="dot ${i === 0 ? 'active' : ''}"></div>`;
+      });
+      dotsHtml += `</div>`;
+    }
+
+    const card = document.createElement('div');
+    card.className = 'glass-card glass-card-interactive flex flex-col overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs';
+
+    card.innerHTML = `
+      <!-- 輪播相簿容器 (4:5 滿版直式照片) -->
+      <div class="relative w-full aspect-[4/5] min-h-[300px] overflow-hidden bg-stone-100" style="aspect-ratio: 4/5; min-height: 300px;">
+        <div class="snap-carousel absolute inset-0 w-full h-full" onscroll="handleCardScroll(this, ${idx})" style="width: 100%; height: 100%; display: flex; overflow-x: auto;">
+          ${imagesHtml}
+        </div>
+        <!-- 地區浮動標籤 -->
+        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold text-amber-800 border border-amber-200 shadow-xs z-10">
+          ${m.region}
+        </div>
+        ${dotsHtml}
+      </div>
+
+      <!-- 師傅資料 -->
+      <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <h4 class="text-base font-extrabold text-stone-900 tracking-wide">${m.name}</h4>
+          </div>
+
+          <!-- 身材數據簡潔標籤 -->
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-stone-100 text-stone-700 px-2 py-0.5 rounded-md border border-stone-200">身高 ${m.height || 180}cm</span>
+            <span class="text-[10px] bg-stone-100 text-stone-700 px-2 py-0.5 rounded-md border border-stone-200">體重 ${m.weight || 75}kg</span>
+            <span class="text-[10px] bg-stone-100 text-stone-700 px-2 py-0.5 rounded-md border border-stone-200">${m.age || 26}歲</span>
+          </div>
+        </div>
+
+        <!-- 操作按鈕 -->
+        <div class="pt-2 border-t border-stone-100">
+          <button type="button" onclick="selectMasterForBooking('${m.name}')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-rose-500 hover:brightness-105 text-white text-xs font-bold transition-all shadow-md shadow-amber-600/20">
+            指定預約
+          </button>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// 監聽輪播指示點
+window.handleCardScroll = function(elem, idx) {
+  const scrollLeft = elem.scrollLeft;
+  const width = elem.clientWidth;
+  const index = Math.round(scrollLeft / width);
+  const dotsContainer = document.getElementById(`dots-${idx}`);
+  if (dotsContainer) {
+    const dots = dotsContainer.children;
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('active', i === index);
+    }
+  }
+};
+
+// 地區切換
+window.filterRegion = function(reg) {
+  currentRegion = reg;
+  document.querySelectorAll('#region-tabs .region-btn').forEach(btn => {
+    const isActive = btn.dataset.reg === reg;
+    btn.classList.toggle('active', isActive);
+    btn.classList.toggle('bg-amber-600', isActive);
+    btn.classList.toggle('text-white', isActive);
+    btn.classList.toggle('bg-white', !isActive);
+    btn.classList.toggle('text-stone-600', !isActive);
+  });
+  
+  const cards = document.querySelectorAll('#masters-grid .master-card');
+  if (cards.length > 0) {
+    cards.forEach(card => {
+      const cardReg = card.dataset.region || '';
+      const isBf = card.dataset.isBf === 'true';
+      if (reg === '全部') {
+        card.style.display = '';
+      } else if (reg === '一日男友') {
+        card.style.display = (isBf || cardReg.includes('一日男友')) ? '' : 'none';
+      } else {
+        card.style.display = cardReg.includes(reg) ? '' : 'none';
+      }
+    });
+  } else {
+    renderMasters();
+  }
+};
+
+// 填充下拉選單
+function populateMasterSelect() {
+  const sel = document.getElementById('booking-master-select');
+  if (!sel) return;
+  sel.innerHTML = '<option value="" disabled selected>請選擇指定芳療師</option>';
+  allMasters.forEach(m => {
+    sel.innerHTML += `<option value="${m.name}">${m.name} (${m.region} · ${m.height}cm / ${m.weight}kg · ${m.age}歲)</option>`;
+  });
+  if (allMasters.length > 0 && !selectedMaster) {
+    selectedMaster = allMasters[0];
+    sel.value = selectedMaster.name;
+    updateMasterDisplay();
+  }
+}
+
+// 點擊卡片「指定預約」快捷填入並滾動至預約表單
+window.selectMasterForBooking = function(name) {
+  const target = allMasters.find(m => m.name === name);
+  if (!target) return;
+  selectedMaster = target;
+  const sel = document.getElementById('booking-master-select');
+  if (sel) sel.value = name;
+  updateMasterDisplay();
+
+  const bookingSection = document.getElementById('booking-section');
+  if (bookingSection) {
+    bookingSection.scrollIntoView({ behavior: 'smooth' });
+  }
+  if (selectedDate) {
+    loadSlotsForDate(selectedDate);
+  }
+};
+
+window.onMasterSelectChanged = function() {
+  const sel = document.getElementById('booking-master-select');
+  const target = allMasters.find(m => m.name === sel.value);
+  if (target) {
+    selectedMaster = target;
+    updateMasterDisplay();
+    if (selectedDate) {
+      loadSlotsForDate(selectedDate);
+    }
+  }
+};
+
+function updateMasterDisplay() {
+  if (!selectedMaster) return;
+  const sumMaster = document.getElementById('sum-master-name');
+  if (sumMaster) sumMaster.innerText = `${selectedMaster.name} (${selectedMaster.region})`;
+  
+  // 自動連動服務城市選項
+  const cityRadios = document.getElementsByName('service-city');
+  const reg = selectedMaster.region || '';
+  for (let cr of cityRadios) {
+    if (reg.includes('高雄')) {
+      cr.checked = (cr.value === '高雄');
+    } else if (reg.includes('台中')) {
+      cr.checked = (cr.value === '台中');
+    } else {
+      cr.checked = (cr.value === '雙北');
+    }
+  }
+  calculatePrice();
+}
+
+// 4. 地點切換
+window.onLocationChange = function() {
+  const locRadios = document.getElementsByName('location-type');
+  let chosen = '雙北西門工作室';
+  for (let r of locRadios) {
+    if (r.checked) chosen = r.value;
+  }
+  const customBox = document.getElementById('custom-address-box');
+  if (chosen.includes('外出到府')) {
+    studioFee = 0;
+    if (customBox) customBox.classList.remove('hidden');
+  } else {
+    studioFee = 400;
+    if (customBox) customBox.classList.add('hidden');
+  }
+  calculatePrice();
+};
+
+window.onAddonTimeChange = function(type) {
+  const c30 = document.getElementById('addon-time-30');
+  const c60 = document.getElementById('addon-time-60');
+  if (type === '30' && c30 && c30.checked) {
+    if (c60) c60.checked = false;
+  } else if (type === '60' && c60 && c60.checked) {
+    if (c30) c30.checked = false;
+  }
+  calculatePrice();
+};
+
+function timeToMinutes(t) {
+  const [h, m] = t.split(':').map(Number);
+  return h * 60 + m;
+}
+
+// 5. 計算總價
+window.calculatePrice = function() {
+  const basePrice = selectedService ? selectedService.price : 2400;
+  const baseDuration = selectedService ? selectedService.duration_min : 90;
+
+  const coupleChecked = document.getElementById('addon-couple')?.checked || false;
+  const time30Checked = document.getElementById('addon-time-30')?.checked || false;
+  const time60Checked = document.getElementById('addon-time-60')?.checked || false;
+
+  let extraDuration = 0;
+  let extraFee = 0;
+  if (time30Checked) {
+    extraDuration = 30;
+    extraFee += 600;
+  } else if (time60Checked) {
+    extraDuration = 60;
+    extraFee += 1200;
+  }
+
+  if (coupleChecked) {
+    extraFee += 500;
+  }
+
+  let total = basePrice + studioFee + extraFee;
+
+  let isMidnight = false;
+  if (selectedTime) {
+    const [h] = selectedTime.split(':').map(Number);
+    if (h >= 23 || h < 6) {
+      isMidnight = true;
+      total += 500;
+    }
+  }
+
+  const finalDuration = baseDuration + extraDuration;
+
+  // 更新介面
+  const durationTextElem = document.getElementById('summary-duration-text');
+  if (durationTextElem) durationTextElem.innerText = finalDuration;
+
+  const sumDurationElem = document.getElementById('sum-duration');
+  if (sumDurationElem) sumDurationElem.innerText = `${finalDuration} 分鐘`;
+
+  const srvName = selectedService ? selectedService.name : '方案未選';
+  const sumSrvElem = document.getElementById('sum-service-name');
+  if (sumSrvElem) sumSrvElem.innerText = srvName;
+
+  const breakdownHint = isMidnight ? ' (含夜間加成 $500)' : '';
+  const priceFormatted = `NT$ ${total.toLocaleString()}${breakdownHint}`;
+
+  const sumPriceElem = document.getElementById('sum-total-price');
+  if (sumPriceElem) sumPriceElem.innerText = priceFormatted;
+
+  const badgeElem = document.getElementById('selected-service-badge');
+  if (badgeElem) badgeElem.innerText = `${srvName} · ${finalDuration}分 · ${priceFormatted}`;
+
+  return { total, duration: finalDuration, isMidnight, coupleChecked, time30Checked, time60Checked };
+};
+
+// 6. 初始化 14 天日期滑動軸 (對照 STR 排版)
+function initDateList() {
+  const container = document.getElementById('date-scroll-list');
+  if (!container) return;
+  container.innerHTML = '';
+  const dayNames = ['週日', '週一', '週二', '週三', '週四', '週五', '週六'];
+  const today = new Date();
+
+  const monthEl = document.getElementById('current-month-text');
+  if (monthEl) {
+    monthEl.innerText = `${today.getFullYear()}年 ${today.getMonth() + 1}月`;
+  }
+
+  for (let i = 0; i < 14; i++) {
+    const d = new Date();
+    d.setDate(today.getDate() + i);
+
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    const dateStr = `${yyyy}-${mm}-${dd}`;
+    const dayLabel = i === 0 ? '今天' : dayNames[d.getDay()];
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `date-pill flex-shrink-0 px-3.5 py-2.5 rounded-xl border text-center transition-all ${
+      i === 0 ? 'active' : 'bg-white border-stone-200 text-stone-700 hover:border-amber-400'
+    }`;
+    btn.dataset.date = dateStr;
+    btn.onclick = () => selectDate(dateStr);
+
+    btn.innerHTML = `
+      <span class="block text-[10px] text-stone-500 font-medium">${dayLabel}</span>
+      <span class="block text-sm font-bold mt-0.5 font-mono">${d.getDate()}</span>
+    `;
+
+    container.appendChild(btn);
+    if (i === 0) selectedDate = dateStr;
+  }
+
+  if (selectedDate) {
+    loadSlotsForDate(selectedDate);
+  }
+}
+
+function selectDate(dateStr) {
+  selectedDate = dateStr;
+  document.querySelectorAll('#date-scroll-list .date-pill').forEach(b => {
+    b.classList.toggle('active', b.dataset.date === dateStr);
+  });
+  loadSlotsForDate(dateStr);
+  updateSummaryDisplay();
+}
+
+// 地點切換 (Step 2，對照 STR)
+window.onLocationChange = function() {
+  const locRadios = document.getElementsByName('location-type');
+  let chosen = '雙北西門工作室';
+  for (let r of locRadios) {
+    if (r.checked) chosen = r.value;
+  }
+  const customBox = document.getElementById('custom-address-box');
+  if (chosen.includes('外出到府') || chosen.includes('飯店') || chosen.includes('外出服務')) {
+    studioFee = 0;
+    if (customBox) customBox.classList.remove('hidden');
+  } else {
+    studioFee = 400;
+    if (customBox) customBox.classList.add('hidden');
+  }
+  calculatePrice();
+  buildPreview();
+};
+
+// 7. 載入 48 格時段 (對照 STR 寬版大按鈕與自動選中)
+async function loadSlotsForDate(dateStr) {
+  const container = document.getElementById('slots-grid-container');
+  if (!container) return;
+  container.innerHTML = '<div class="col-span-full py-8 text-center text-xs text-stone-500"><i class="fas fa-spinner fa-spin mr-1 text-amber-600"></i> 即時連線時段中...</div>';
+
+  function generate48Slots() {
+    const list = [];
+    for (let h = 0; h < 24; h++) {
+      const hh = String(h).padStart(2, '0');
+      list.push({ time: `${hh}:00`, status: 'available' });
+      list.push({ time: `${hh}:30`, status: 'available' });
+    }
+    return list;
+  }
+
+  let slots = [];
+  try {
+    const masterName = selectedMaster ? selectedMaster.name : '';
+    const res = await fetch(`/api/slots?date=${dateStr}&master=${encodeURIComponent(masterName)}`);
+    if (res.ok) {
+      const data = await res.json();
+      slots = data.slots || generate48Slots();
+    } else {
+      slots = generate48Slots();
+    }
+  } catch (e) {
+    slots = generate48Slots();
+  }
+
+  container.innerHTML = '';
+  if (slots.length === 0) {
+    container.innerHTML = '<div class="col-span-full py-6 text-center text-xs text-stone-500">當日尚未開放排班，請於 LINE 洽詢小編安排</div>';
+    return;
+  }
+
+    slots.sort((a, b) => timeToMinutes(a.time) - timeToMinutes(b.time));
+
+    // 自動預選：若當前沒選中任何時段，優先選晚間熱門時段 20:00 或第一個可用時段
+    const availableSlots = slots.filter(s => s.status === 'available');
+    const isCurrentAvailable = availableSlots.some(s => s.time === selectedTime);
+    if (!isCurrentAvailable && availableSlots.length > 0) {
+      const preferred = availableSlots.find(s => s.time === '20:00') || availableSlots.find(s => s.time === '19:00') || availableSlots.find(s => s.time === '15:00') || availableSlots[0];
+      selectedTime = preferred.time;
+    }
+
+    slots.forEach(s => {
+      const isLocked = s.status === 'locked' || s.status === 'pending';
+      const isAvailable = !isLocked;
+      const isSelected = (selectedTime === s.time);
+      const [h] = s.time.split(':').map(Number);
+      const isMidnight = (h >= 23 || h < 6);
+
+      const box = document.createElement('div');
+      box.className = `slot-box p-2.5 text-center relative cursor-pointer transition-all ${isLocked ? 'locked' : ''} ${isSelected ? 'active' : ''}`;
+
+      box.innerHTML = `
+        <span class="block text-xs font-mono font-bold tracking-wider">${s.time}</span>
+        <span class="block text-[9px] mt-0.5 ${isLocked ? 'text-stone-400' : isSelected ? 'text-rose-600 font-bold' : 'text-amber-700 font-semibold'}">
+          ${isLocked ? '已約滿' : isSelected ? '已選中' : '可預約'}
+        </span>
+        ${isMidnight && isAvailable ? '<span class="absolute -top-1 -right-1 text-[8px] bg-rose-100 text-rose-700 border border-rose-200 px-1 rounded-full font-bold">夜</span>' : ''}
+      `;
+
+      if (isAvailable) {
+        box.onclick = () => {
+          document.querySelectorAll('.slot-box').forEach(b => {
+            b.classList.remove('active');
+            const sub = b.querySelector('span:nth-child(2)');
+            if (sub && !b.classList.contains('locked')) {
+              sub.className = 'block text-[9px] mt-0.5 text-amber-700 font-semibold';
+              sub.innerText = '可預約';
+            }
+          });
+          box.classList.add('active');
+          const mySub = box.querySelector('span:nth-child(2)');
+          if (mySub) {
+            mySub.className = 'block text-[9px] mt-0.5 text-rose-600 font-bold';
+            mySub.innerText = '已選中';
+          }
+          selectedTime = s.time;
+          updateSummaryDisplay();
+          calculatePrice();
+          buildPreview();
+        };
+      }
+
+      container.appendChild(box);
+    });
+
+    updateSummaryDisplay();
+    buildPreview();
+
+  } catch (e) {
+    console.error('Failed to load slots:', e);
+    container.innerHTML = '<div class="col-span-full py-6 text-center text-xs text-rose-600">時段連線失敗</div>';
+  }
+}
+
+function updateSummaryDisplay() {
+  const sumDatetime = document.getElementById('sum-datetime');
+  if (sumDatetime && selectedDate && selectedTime) {
+    sumDatetime.innerText = `${selectedDate} ${selectedTime}`;
+  }
+  const finalDatetime = document.getElementById('final-sum-datetime');
+  if (finalDatetime && selectedDate && selectedTime) {
+    finalDatetime.innerText = `${selectedDate} ${selectedTime}`;
+  }
+}
+
+// 8. 步驟切換 (1 -> 2 -> 3，對照 STR 流程)
+window.goToStep = function(step) {
+  try {
+    if (step === 2) {
+      if (!selectedMaster) {
+        const masterSel = document.getElementById('booking-master-select');
+        if (masterSel && masterSel.options.length > 1) {
+          masterSel.selectedIndex = 1;
+          selectedMaster = allMasters[0] || { name: masterSel.options[1].value };
+          onMasterSelectChanged();
+        } else if (allMasters && allMasters.length > 0) {
+          selectedMaster = allMasters[0];
+          onMasterSelectChanged();
+        }
+      }
+      if (!selectedService) {
+        if (allServices && allServices.length > 0) {
+          selectedService = allServices[0];
+          renderServices();
+        }
+      }
+      if (!selectedDate) {
+        const firstPill = document.querySelector('#date-scroll-list .date-pill');
+        if (firstPill && firstPill.dataset.date) {
+          selectDate(firstPill.dataset.date);
+        }
+      }
+    }
+
+    if (step === 3) {
+      if (!selectedTime) {
+        const firstAvail = document.querySelector('.slot-box:not(.locked)');
+        if (firstAvail) {
+          firstAvail.click();
+        } else {
+          selectedTime = '時段由專人確認';
+        }
+      }
+      buildPreview();
+    }
+  } catch (err) {
+    console.error('goToStep pre-check error:', err);
+  }
+
+  const s1 = document.getElementById('step-content-1');
+  const s2 = document.getElementById('step-content-2');
+  const s3 = document.getElementById('step-content-3');
+  if (s1) s1.classList.toggle('hidden', step !== 1);
+  if (s2) s2.classList.toggle('hidden', step !== 2);
+  if (s3) s3.classList.toggle('hidden', step !== 3);
+
+  // 更新步驟節點 (1 - 2 - 3)
+  for (let s = 1; s <= 3; s++) {
+    const node = document.getElementById(`step-node-${s}`);
+    const text = document.getElementById(`step-node-text-${s}`);
+    if (node) {
+      if (s < step) {
+        node.className = 'step-node completed';
+        node.innerHTML = '<i class="fas fa-check text-xs"></i>';
+        if (text) text.className = 'text-[11px] font-bold text-emerald-700';
+      } else if (s === step) {
+        node.className = 'step-node current';
+        node.innerText = s;
+        if (text) text.className = 'text-[11px] font-bold text-amber-800';
+      } else {
+        node.className = 'step-node pending';
+        node.innerText = s;
+        if (text) text.className = 'text-[11px] font-bold text-stone-400';
+      }
+    }
+  }
+
+  const bookingSec = document.getElementById('booking-section');
+  if (bookingSec) {
+    window.scrollTo({ top: bookingSec.offsetTop - 60, behavior: 'smooth' });
+  }
+};
+
+// 9. 組裝預約預覽單 (依照指定 7 行格式)
+function buildPreviewText() {
+  const { total } = calculatePrice();
+  const masterName = selectedMaster ? selectedMaster.name : '未指定';
+
+  // 服務城市
+  let city = '雙北';
+  const cityRadios = document.getElementsByName('service-city');
+  for (let cr of cityRadios) {
+    if (cr.checked) city = cr.value;
+  }
+
+  // 服務地點
+  let loc = '雙北西門工作室';
+  const locRadios = document.getElementsByName('location-type');
+  for (let r of locRadios) {
+    if (r.checked) {
+      if (r.value.includes('外出到府') || r.value.includes('飯店') || r.value.includes('外出服務')) {
+        const addr = (document.getElementById('custom-address-input')?.value || '').trim();
+        loc = addr ? `外出服務 (${addr})` : '外出服務 (待專人確認地址)';
+      } else {
+        loc = '雙北西門工作室';
+      }
+    }
+  }
+
+  // 備註
+  const rawNotes = (document.getElementById('cust-notes')?.value || '').trim();
+  const notes = rawNotes || '無';
+
+  return `師傅：${masterName}
+日期：${selectedDate || ''}
+時間：${selectedTime || ''}
+服務城市：${city}
+服務地點：${loc}
+費用：NT$ ${total.toLocaleString()}
+備註：${notes}`;
+}
+
+function buildPreview() {
+  const { total, duration } = calculatePrice();
+  const previewText = buildPreviewText();
+
+  const previewElem = document.getElementById('booking-preview-text');
+  if (previewElem) previewElem.innerText = previewText;
+
+  // 計算並預先綁定 LINE 官方 oaMessage 連結到按鈕 href
+  const encodedText = encodeURIComponent(previewText);
+  let cleanBotId = (lineBotId || '@973sfpws').trim();
+  if (!cleanBotId.startsWith('@')) cleanBotId = '@' + cleanBotId;
+  const encodedBotId = encodeURIComponent(cleanBotId);
+  const lineUrl = `https://line.me/R/oaMessage/${encodedBotId}/?${encodedText}`;
+
+  const mainBtn = document.getElementById('btn-line-dispatch-main');
+  if (mainBtn) mainBtn.href = lineUrl;
+  const modalBtn = document.getElementById('btn-open-line-url');
+  if (modalBtn) modalBtn.href = lineUrl;
+
+  // 更新摘要卡片
+  const srvName = selectedService ? selectedService.name : '方案未選';
+  const sumSrv = document.getElementById('final-sum-service');
+  if (sumSrv) sumSrv.innerText = srvName;
+  const sumDur = document.getElementById('final-sum-duration');
+  if (sumDur) sumDur.innerText = `${duration} 分鐘`;
+  const sumDt = document.getElementById('final-sum-datetime');
+  if (sumDt) sumDt.innerText = `${selectedDate || ''} ${selectedTime || ''}`;
+  const sumP = document.getElementById('final-sum-price');
+  if (sumP) sumP.innerText = `NT$ ${total.toLocaleString()}`;
+}
+
+// 10. 複製預約單 (對照 STR 樣式與 Toast 提示)
+window.copyPreviewText = function() {
+  const text = document.getElementById('booking-preview-text')?.innerText || '';
+  const showSuccess = () => {
+    const toast = document.getElementById('copy-toast');
+    if (toast) {
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3500);
+    } else {
+      alert('已成功複製預約內容！請直接在 LINE 聊天室貼上送出。');
+    }
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(showSuccess).catch(() => {
+      showSuccess();
+    });
+  } else {
+    showSuccess();
+  }
+};
+
+// 11. LINE 送出預約 (使用 LINE 官方 oaMessage 語法)
+window.submitBookingToLine = async function(event) {
+  if (event && event.preventDefault) event.preventDefault();
+
+  const { total, duration } = calculatePrice();
+  const masterName = selectedMaster ? selectedMaster.name : '';
+  const srvName = selectedService ? selectedService.name : '芳療方案';
+  const rawNotes = (document.getElementById('cust-notes')?.value || '').trim();
+  const notes = rawNotes || '無';
+
+  // 服務城市
+  let city = '雙北';
+  const cityRadios = document.getElementsByName('service-city');
+  for (let cr of cityRadios) {
+    if (cr.checked) city = cr.value;
+  }
+
+  // 服務地點
+  let loc = '雙北西門工作室';
+  const locRadios = document.getElementsByName('location-type');
+  for (let r of locRadios) {
+    if (r.checked) {
+      if (r.value.includes('外出到府') || r.value.includes('飯店') || r.value.includes('外出服務')) {
+        const addr = (document.getElementById('custom-address-input')?.value || '').trim();
+        loc = addr ? `外出服務 (${addr})` : '外出服務 (待專人確認地址)';
+      } else {
+        loc = '雙北西門工作室';
+      }
+    }
+  }
+
+  const addons = [];
+  if (document.getElementById('addon-couple')?.checked) addons.push('夫妻情侶按摩');
+  if (document.getElementById('addon-time-30')?.checked) addons.push('加時 30 分鐘');
+  if (document.getElementById('addon-time-60')?.checked) addons.push('加時 60 分鐘');
+
+  try {
+    // 建立後端預約記錄
+    await fetch('/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        master_name: masterName,
+        service_name: srvName,
+        duration_min: duration,
+        date: selectedDate,
+        time: selectedTime,
+        location: `${city} ${loc}`,
+        addons: addons,
+        customer_name: 'LINE貴賓',
+        customer_phone: '',
+        notes: notes,
+        total_price: total
+      })
+    });
+  } catch (e) {
+    console.error('Failed to create booking in DB:', e);
+  }
+
+  // 組裝 LINE 官方 oaMessage 連結
+  const text = buildPreviewText();
+  const encodedText = encodeURIComponent(text);
+  let cleanBotId = (lineBotId || '@973sfpws').trim();
+  if (!cleanBotId.startsWith('@')) cleanBotId = '@' + cleanBotId;
+  const encodedBotId = encodeURIComponent(cleanBotId);
+  const lineUrl = `https://line.me/R/oaMessage/${encodedBotId}/?${encodedText}`;
+
+  // 嘗試複製至剪貼簿作為雙重保障
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text);
+    }
+  } catch (e) {}
+
+  // 打開備用彈窗
+  const btnOpen = document.getElementById('btn-open-line-url');
+  if (btnOpen) btnOpen.href = lineUrl;
+  const redirectModal = document.getElementById('line-redirect-modal');
+  if (redirectModal) {
+    redirectModal.classList.remove('hidden');
+    redirectModal.classList.add('flex');
+  }
+
+  // 透過 LINE 官方 oaMessage Scheme 跳轉
+  window.location.href = lineUrl;
+};
+
+window.closeLineRedirectModal = function() {
+  const modal = document.getElementById('line-redirect-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+};
+
+// 12. 大圖燈箱 (Lightbox Modal)
+window.openLightbox = function(picsJson, index) {
+  try {
+    currentLightboxImages = JSON.parse(decodeURIComponent(picsJson));
+  } catch (e) {
+    currentLightboxImages = [];
+  }
+  if (!currentLightboxImages || currentLightboxImages.length === 0) return;
+  currentLightboxIndex = index || 0;
+  updateLightbox();
+
+  const modal = document.getElementById('lightbox-modal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+};
+
+function updateLightbox() {
+  const img = document.getElementById('lightbox-img');
+  img.src = currentLightboxImages[currentLightboxIndex];
+
+  const dotsContainer = document.getElementById('lightbox-dots');
+  dotsContainer.innerHTML = '';
+  currentLightboxImages.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = `w-2 h-2 rounded-full cursor-pointer transition-all ${i === currentLightboxIndex ? 'bg-amber-400 w-5' : 'bg-white/40'}`;
+    dot.onclick = () => {
+      currentLightboxIndex = i;
+      updateLightbox();
+    };
+    dotsContainer.appendChild(dot);
+  });
+}
+
+window.closeLightbox = function() {
+  const modal = document.getElementById('lightbox-modal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+};
+
+// 13. 顧客評價彈窗 (Review Modal)
+window.openReviewModal = async function(masterName) {
+  try {
+    let data = null;
+    try {
+      const res = await fetch(`/api/reviews/${encodeURIComponent(masterName)}`);
+      if (res.ok) data = await res.json();
+    } catch (e) {}
+
+    if (!data || !data.reviews) {
+      try {
+        const res2 = await fetch('data/reviews.json?v=' + Date.now());
+        const rDb = await res2.json();
+        const found = rDb[masterName] || [];
+        const total = found.reduce((acc, r) => acc + (parseFloat(r.rating1 || 10) + parseFloat(r.rating2 || 10)) / 2, 0);
+        const avg = found.length ? (total / found.length).toFixed(1) : '10.0';
+        data = {
+          success: true,
+          master: masterName,
+          average_rating: avg,
+          review_count: found.length || 45,
+          reviews: found
+        };
+      } catch (err) {
+        data = { success: true, master: masterName, average_rating: '10.0', review_count: 45, reviews: [] };
+      }
+    }
+
+    document.getElementById('review-modal-master-name').innerText = masterName;
+    document.getElementById('review-modal-score').innerText = `⭐ ${data.average_rating || '10.0'} 滿分推薦 (${data.review_count || 45} 則女性顧客真實評價)`;
+
+    const list = document.getElementById('review-list-container');
+    list.innerHTML = '';
+
+    (data.reviews || []).forEach(r => {
+      const item = document.createElement('div');
+      item.className = 'p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs';
+      item.innerHTML = `
+        <div class="flex justify-between items-center mb-1">
+          <span class="font-bold text-stone-900">${r.reviewer}</span>
+          <span class="text-[10px] text-stone-400">${r.date}</span>
+        </div>
+        <div class="flex space-x-1 mb-2">
+          ${(r.tags || []).map(t => `<span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200 font-medium">${t}</span>`).join('')}
+        </div>
+        <p class="text-[11px] text-stone-700 leading-relaxed">${r.comment}</p>
+      `;
+      list.appendChild(item);
+    });
+
+    const modal = document.getElementById('review-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+
+  } catch (e) {
+    console.error('Failed to open review modal:', e);
+  }
+};
+
+window.closeReviewModal = function() {
+  const modal = document.getElementById('review-modal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+};

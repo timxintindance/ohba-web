@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>OPA SPA | 女性專屬帥哥按摩舒壓 · 官方線上預約系統</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Playfair Display + Noto Serif TC + Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Light Luxury Salon CSS -->
+  <link rel="stylesheet" href="static/css/style.css?v=5.0">
+</head>
+<body class="bg-[#FAF8F5] text-[#2B2320] antialiased min-h-screen pb-24">
+
+  <!-- 頂部奢雅品牌導覽列 -->
+  <header class="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-amber-200/80 px-4 py-3 shadow-xs">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div>
+          <h1 class="brand-font text-base sm:text-lg font-bold tracking-wider text-gold-gradient">OPA SPA</h1>
+          <p class="text-[10px] text-amber-800 font-semibold tracking-wider">女性專屬帥哥按摩舒壓</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="#booking-section" class="text-xs px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-rose-500 hover:brightness-105 text-white font-bold transition-all shadow-md shadow-amber-600/20 flex items-center gap-1.5">
+          <i class="fas fa-calendar-check"></i>
+          <span>線上預約</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 跑馬燈公告列 -->
+  <div class="bg-amber-100/70 border-b border-amber-200/80 py-2 px-4">
+    <div class="max-w-5xl mx-auto flex items-center gap-2 text-[11px] text-amber-900 font-medium">
+      <span class="bg-amber-500/20 text-amber-800 px-2 py-0.5 rounded text-[10px] font-bold whitespace-nowrap">
+        <i class="fas fa-bullhorn mr-1"></i> 公告
+      </span>
+      <marquee scrollamount="4" class="tracking-wide">
+        全預約制 · 精選帥哥男師 · 西門工作室（清潔費 $400，無乾濕分離） · 可外出到府旅館 · 預約請於 LINE 送出確認
+      </marquee>
+    </div>
+  </div>
+
+  <main class="max-w-5xl mx-auto px-4 py-6 space-y-10">
+
+    <!-- 品牌 Hero 特色 -->
+    <section class="text-center py-6">
+      <div class="inline-block px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-800 text-xs font-bold tracking-widest mb-3">
+        EXCLUSIVE FOR WOMEN · PRIVATE & RELAX
+      </div>
+      <p class="text-xs sm:text-sm text-stone-600 max-w-xl mx-auto leading-relaxed">
+        精選帥哥男師，以溫潤長推、指壓油壓與深層組織手法，在私密寧靜的時光中，為您徹底釋放身心靈的每一吋疲憊。
+      </p>
+
+      <!-- 規格徽章 -->
+      <div class="flex flex-wrap justify-center items-center gap-2 mt-4 text-[11px]">
+        <span class="px-3 py-1 rounded-full bg-white border border-amber-200 text-amber-900 font-medium shadow-xs">
+          <i class="fas fa-map-marker-alt text-amber-600 mr-1"></i> 服務範圍：雙北 · 台中 · 高雄 · 一日男友
+        </span>
+        <span class="px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-900 font-medium shadow-xs">
+          <i class="fas fa-car text-rose-600 mr-1"></i> 可外出到府旅館
+        </span>
+        <a href="#studio-section" class="px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-900 font-bold shadow-xs hover:bg-amber-100 transition-all flex items-center gap-1">
+          <i class="fas fa-door-closed text-amber-600"></i>
+          <span>雙北西門工作室（查看實景環境）</span>
+          <i class="fas fa-chevron-right text-[9px] text-amber-600"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION 1：師傅形象牆 (Master Gallery) - 參考 WonderSpa 風格
+         ════════════════════════════════════════════════════════════ -->
+    <section id="gallery-section" class="space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h3 class="text-lg font-bold text-stone-900 tracking-wide flex items-center gap-2">
+            <span class="w-2 h-5 rounded-full bg-gradient-to-b from-amber-600 to-rose-500 inline-block"></span>
+            師傅形象牆 MASTER GALLERY
+          </h3>
+          <p class="text-xs text-stone-500 mt-0.5">滑動照片瀏覽多圖 · 點「指定預約」直接帶入表單</p>
+        </div>
+      </div>
+
+      <!-- 地區切換 Tabs -->
+      <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar" id="region-tabs">
+        <button onclick="filterRegion('全部')" class="region-btn active px-4 py-1.5 rounded-full text-xs font-bold bg-amber-600 text-white transition-all shadow-xs" data-reg="全部">全部師傅</button>
+        <button onclick="filterRegion('一日男友')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="一日男友">💖 一日男友</button>
+        <button onclick="filterRegion('雙北')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="雙北">雙北地區</button>
+        <button onclick="filterRegion('台中')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="台中">台中地區</button>
+        <button onclick="filterRegion('高雄')" class="region-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200 hover:border-amber-400 transition-all" data-reg="高雄">高雄地區</button>
+      </div>
+
+      <!-- 師傅卡片容器 (3 列直式大卡片排版) -->
+      <!-- 師傅卡片容器 (由 JS 動態注入，支援圖片懶加載) -->
+      <div id="masters-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <!-- 由 JS 動態注入 -->
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION 1.5：工作室實景環境 (Studio Environment Gallery)
+         ════════════════════════════════════════════════════════════ -->
+    <section id="studio-section" class="space-y-4 pt-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h3 class="text-lg font-bold text-stone-900 tracking-wide flex items-center gap-2">
+            <span class="w-2 h-5 rounded-full bg-gradient-to-b from-amber-600 to-rose-500 inline-block"></span>
+            雙北西門工作室環境
+          </h3>
+          <p class="text-xs text-stone-500 mt-0.5">西門捷運站旁 · 獨立包廂 · 備淋浴與 Dyson 吹風機 · 點擊可放大預覽照片</p>
+        </div>
+      </div>
+
+      <!-- 工作室環境 4 格展示網格 (點擊放大預覽) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group" onclick="openLightbox('%5B%22static/studio/studio_1.jpg%22%2C%20%22static/studio/studio_2.jpg%22%2C%20%22static/studio/studio_3.jpg%22%2C%20%22static/studio/studio_4.jpg%22%5D', 0)">
+          <div class="relative w-full aspect-[4/3] overflow-hidden bg-stone-100">
+            <img src="static/studio/studio_1.jpg" alt="工作室環境 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大</span>
+            </div>
+          </div>
+          <div class="p-2.5 text-center">
+            <p class="text-[11px] font-bold text-stone-800">溫馨按摩包廂</p>
+          </div>
+        </div>
+
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group" onclick="openLightbox('%5B%22static/studio/studio_1.jpg%22%2C%20%22static/studio/studio_2.jpg%22%2C%20%22static/studio/studio_3.jpg%22%2C%20%22static/studio/studio_4.jpg%22%5D', 1)">
+          <div class="relative w-full aspect-[4/3] overflow-hidden bg-stone-100">
+            <img src="static/studio/studio_2.jpg" alt="工作室環境 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大</span>
+            </div>
+          </div>
+          <div class="p-2.5 text-center">
+            <p class="text-[11px] font-bold text-stone-800">私密療癒空間</p>
+          </div>
+        </div>
+
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group" onclick="openLightbox('%5B%22static/studio/studio_1.jpg%22%2C%20%22static/studio/studio_2.jpg%22%2C%20%22static/studio/studio_3.jpg%22%2C%20%22static/studio/studio_4.jpg%22%5D', 2)">
+          <div class="relative w-full aspect-[4/3] overflow-hidden bg-stone-100">
+            <img src="static/studio/studio_3.jpg" alt="工作室環境 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大</span>
+            </div>
+          </div>
+          <div class="p-2.5 text-center">
+            <p class="text-[11px] font-bold text-stone-800">梳洗吹整設備</p>
+          </div>
+        </div>
+
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group" onclick="openLightbox('%5B%22static/studio/studio_1.jpg%22%2C%20%22static/studio/studio_2.jpg%22%2C%20%22static/studio/studio_3.jpg%22%2C%20%22static/studio/studio_4.jpg%22%5D', 3)">
+          <div class="relative w-full aspect-[4/3] overflow-hidden bg-stone-100">
+            <img src="static/studio/studio_4.jpg" alt="工作室環境 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大</span>
+            </div>
+          </div>
+          <div class="p-2.5 text-center">
+            <p class="text-[11px] font-bold text-stone-800">舒適衛浴空間</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION 2：3-STEP 預約排程系統 (Booking Wizard Card)
+         ════════════════════════════════════════════════════════════ -->
+    <section id="booking-section" class="pt-6">
+      <div class="glass-card p-6 md:p-8 space-y-6 max-w-2xl mx-auto border border-amber-300 shadow-lg">
+
+        <!-- 步驟進度條 (1) - (2) - (3) -->
+        <div class="flex items-center justify-between px-4 sm:px-6 border-b border-stone-200 pb-5">
+          <div class="flex flex-col items-center gap-1.5">
+            <div id="step-node-1" class="step-node current">1</div>
+            <span id="step-node-text-1" class="text-[11px] font-bold text-amber-800">挑選師傅</span>
+          </div>
+          <div class="flex-1 h-[2px] bg-stone-200 mx-3"></div>
+          <div class="flex flex-col items-center gap-1.5">
+            <div id="step-node-2" class="step-node pending">2</div>
+            <span id="step-node-text-2" class="text-[11px] font-bold text-stone-400">選擇時間</span>
+          </div>
+          <div class="flex-1 h-[2px] bg-stone-200 mx-3"></div>
+          <div class="flex flex-col items-center gap-1.5">
+            <div id="step-node-3" class="step-node pending">3</div>
+            <span id="step-node-text-3" class="text-[11px] font-bold text-stone-400">確認送出</span>
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════════════════════ -->
+        <!-- 步驟 1：挑選師傅與服務方案 -->
+        <!-- ════════════════════════════════════════════════════════════ -->
+        <div id="step-content-1" class="space-y-5">
+          <h4 class="text-base font-bold text-stone-900 tracking-wide flex items-center gap-2">
+            <i class="fas fa-user-check text-amber-600"></i> 第一步：確認指定師傅與服務
+          </h4>
+
+          <!-- 指定師傅下拉選單 (與上方形象牆連動) -->
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1.5">指定芳療師 MASTER</label>
+            <select id="booking-master-select" onchange="onMasterSelectChanged()" class="w-full bg-white border border-stone-300 rounded-xl px-4 py-3 text-sm text-stone-900 focus:outline-none focus:border-amber-500 shadow-2xs">
+              <option value="" disabled selected>請選擇師傅</option>
+            </select>
+          </div>
+
+          <!-- 服務項目選擇 -->
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <label class="text-xs font-bold text-stone-700">服務項目 SERVICE</label>
+              <!-- 方案分類切換 -->
+              <div class="flex gap-1 text-[11px]">
+                <button type="button" onclick="filterServices('全部')" class="srv-cat-btn active px-2.5 py-0.5 rounded-lg bg-amber-600 text-white font-bold" data-cat="全部">全部</button>
+                <button type="button" onclick="filterServices('舒緩按摩')" class="srv-cat-btn px-2.5 py-0.5 rounded-lg bg-stone-100 text-stone-600 hover:text-stone-900" data-cat="舒緩按摩">舒緩按摩</button>
+                <button type="button" onclick="filterServices('一日男友')" class="srv-cat-btn px-2.5 py-0.5 rounded-lg bg-stone-100 text-rose-600 hover:text-rose-900 font-bold" data-cat="一日男友">一日男友</button>
+              </div>
+            </div>
+            <div id="services-grid" class="grid grid-cols-1 gap-2.5">
+              <!-- 由 JS 動態注入服務方案卡片 -->
+            </div>
+          </div>
+
+          <!-- 加選與客製項目 -->
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1.5">加時加成 ADD-ON</label>
+            <div class="space-y-2">
+              <!-- 夫妻情侶按摩 -->
+              <label class="flex items-center justify-between bg-white border border-stone-200 rounded-xl p-3 cursor-pointer hover:border-amber-300 transition-all">
+                <div class="flex items-center gap-2.5">
+                  <input type="checkbox" id="addon-couple" onchange="calculatePrice()" class="w-4 h-4 text-amber-600 rounded">
+                  <div>
+                    <span class="text-xs font-bold text-stone-800">夫妻情侶按摩加收</span>
+                    <p class="text-[10px] text-stone-500">雙人同行或伴侶共同體驗</p>
+                  </div>
+                </div>
+                <span class="text-xs font-bold text-rose-600 font-mono">+NT$ 500</span>
+              </label>
+
+              <!-- 加時 30 分鐘 -->
+              <label class="flex items-center justify-between bg-white border border-stone-200 rounded-xl p-3 cursor-pointer hover:border-amber-300 transition-all">
+                <div class="flex items-center gap-2.5">
+                  <input type="checkbox" id="addon-time-30" onchange="onAddonTimeChange('30')" class="w-4 h-4 text-amber-600 rounded">
+                  <div>
+                    <span class="text-xs font-bold text-stone-800">延長服務 30 分鐘 (+30min)</span>
+                    <p class="text-[10px] text-stone-500">加強肩頸腰臀深層經絡釋壓</p>
+                  </div>
+                </div>
+                <span class="text-xs font-bold text-amber-700 font-mono">+NT$ 600</span>
+              </label>
+
+              <!-- 加時 60 分鐘 -->
+              <label class="flex items-center justify-between bg-white border border-stone-200 rounded-xl p-3 cursor-pointer hover:border-amber-300 transition-all">
+                <div class="flex items-center gap-2.5">
+                  <input type="checkbox" id="addon-time-60" onchange="onAddonTimeChange('60')" class="w-4 h-4 text-amber-600 rounded">
+                  <div>
+                    <span class="text-xs font-bold text-stone-800">延長服務 60 分鐘 (+60min)</span>
+                    <p class="text-[10px] text-stone-500">極致沉浸舒緩放鬆</p>
+                  </div>
+                </div>
+                <span class="text-xs font-bold text-amber-700 font-mono">+NT$ 1,200</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="button" onclick="goToStep(2)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-rose-500 hover:brightness-105 active:scale-98 text-white font-bold text-sm tracking-wider transition-all shadow-md shadow-amber-600/30 flex items-center justify-center gap-2 cursor-pointer">
+            <span>下一步 · 選擇時間與地點</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════════════════════════ -->
+        <!-- 步驟 2：選擇時間與地點 (對齊 STR 排版) -->
+        <!-- ════════════════════════════════════════════════════════════ -->
+        <div id="step-content-2" class="hidden space-y-6">
+          <div class="flex justify-between items-center">
+            <h4 class="text-base font-bold text-stone-900 tracking-wide flex items-center gap-2">
+              <i class="fas fa-clock text-amber-600"></i> 第二步：選擇時間與地點
+            </h4>
+            <span id="selected-service-badge" class="text-xs bg-amber-50 text-amber-800 border border-amber-300 px-3 py-1 rounded-full font-bold">
+              -
+            </span>
+          </div>
+
+          <!-- 日期選擇器條列 -->
+          <div class="bg-stone-50/80 p-3 rounded-2xl border border-stone-200 space-y-2">
+            <div class="flex justify-between items-center px-2">
+              <span class="text-xs font-bold text-stone-700" id="current-month-text">2026年 11月</span>
+              <span class="text-[11px] text-amber-700 font-bold">每日全時段開放預約</span>
+            </div>
+            <!-- 日期快選按鈕橫條 -->
+            <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar" id="date-scroll-list">
+              <!-- 由 JS 產生 14 天 -->
+            </div>
+          </div>
+
+          <!-- 時間軸網格 (Timeline Hour Slots Grid) -->
+          <div>
+            <div class="flex justify-between items-center mb-2 px-1">
+              <span class="text-xs font-bold text-stone-700">時段空檔 (可選)</span>
+            </div>
+            <div id="slots-grid-container" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-72 overflow-y-auto p-1">
+              <!-- 由 JS 動態注入該師傅當天開放時段 -->
+            </div>
+            <p class="text-[10px] text-stone-500 mt-2 text-center">
+              <i class="fas fa-info-circle mr-1 text-amber-600"></i> 點擊時段 · 時長 <span id="summary-duration-text" class="font-bold text-stone-800">90</span> 分鐘 · 最早 30 分鐘後可接單
+            </p>
+          </div>
+
+          <!-- 服務地點選擇與外出地址 (在 Step 2，對齊 STR) -->
+          <div class="space-y-2.5 pt-2 border-t border-stone-200">
+            <label class="block text-xs font-bold text-stone-700">
+              <i class="fas fa-map-marker-alt text-amber-600 mr-1"></i> 服務地點 LOCATION *
+            </label>
+            <div class="space-y-2">
+              <label class="flex items-center justify-between bg-white border border-stone-200 rounded-xl p-3 cursor-pointer hover:border-amber-300 transition-all">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="location-type" value="雙北西門工作室" checked onchange="onLocationChange()" class="w-4 h-4 text-amber-600">
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="text-xs font-bold text-stone-900">雙北西門工作室</span>
+                      <button type="button" onclick="openLightbox('%5B%22static/studio/studio_1.jpg%22%2C%20%22static/studio/studio_2.jpg%22%2C%20%22static/studio/studio_3.jpg%22%2C%20%22static/studio/studio_4.jpg%22%5D', 0)" class="text-[10px] text-amber-700 bg-amber-100/80 hover:bg-amber-200 px-2 py-0.5 rounded-md font-bold transition-all flex items-center gap-1">
+                        <i class="fas fa-images text-[9px]"></i> 查看實景照片
+                      </button>
+                    </div>
+                    <p class="text-[10px] text-stone-500">西門捷運站旁 · 獨立包廂 · 備淋浴與 Dyson 吹風機 · 清潔費 +$400</p>
+                  </div>
+                </div>
+                <span class="text-xs font-bold text-amber-700 font-mono">+NT$ 400</span>
+              </label>
+
+              <label class="flex items-center justify-between bg-white border border-stone-200 rounded-xl p-3 cursor-pointer hover:border-amber-300 transition-all">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="location-type" value="外出到府/指定飯店" onchange="onLocationChange()" class="w-4 h-4 text-amber-600">
+                  <div>
+                    <span class="text-xs font-bold text-stone-900">外出服務 (住家 / 飯店)</span>
+                    <p class="text-[10px] text-amber-700 font-semibold">※ 車馬費另計 (雙北/台中/高雄皆可預約到府旅館)</p>
+                  </div>
+                </div>
+                <span class="text-xs font-bold text-stone-500">車馬費另計</span>
+              </label>
+            </div>
+
+            <!-- 外出詳細地址填寫框 -->
+            <div id="custom-address-box" class="hidden mt-2">
+              <label class="block text-[11px] font-bold text-amber-800 mb-1">
+                <i class="fas fa-home mr-1"></i> 請填寫完整外出地址（住家或飯店房號）*
+              </label>
+              <input type="text" id="custom-address-input" oninput="buildPreview()" placeholder="如：台北市中山區南京東路... 或 晶華酒店 802號房" class="w-full bg-white border border-amber-400 rounded-xl px-4 py-2.5 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-amber-500">
+            </div>
+          </div>
+
+          <!-- 服務城市與備註需求 -->
+          <div class="space-y-3 pt-2 border-t border-stone-200">
+            <div>
+              <label class="block text-[11px] font-bold text-stone-600 mb-1">服務城市 CITY</label>
+              <div class="grid grid-cols-3 gap-2">
+                <label class="flex items-center justify-center gap-1.5 p-2 rounded-xl border border-stone-200 bg-white cursor-pointer has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 has-[:checked]:text-amber-900 text-xs font-bold transition-all">
+                  <input type="radio" name="service-city" value="雙北" checked class="text-amber-600" onchange="buildPreview()">
+                  <span>雙北 (台北/新北)</span>
+                </label>
+                <label class="flex items-center justify-center gap-1.5 p-2 rounded-xl border border-stone-200 bg-white cursor-pointer has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 has-[:checked]:text-amber-900 text-xs font-bold transition-all">
+                  <input type="radio" name="service-city" value="台中" class="text-amber-600" onchange="buildPreview()">
+                  <span>台中地區</span>
+                </label>
+                <label class="flex items-center justify-center gap-1.5 p-2 rounded-xl border border-stone-200 bg-white cursor-pointer has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 has-[:checked]:text-amber-900 text-xs font-bold transition-all">
+                  <input type="radio" name="service-city" value="高雄" class="text-amber-600" onchange="buildPreview()">
+                  <span>高雄地區</span>
+                </label>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-stone-600 mb-1">備註需求 NOTES（選填）</label>
+              <input type="text" id="cust-notes" oninput="buildPreview()" placeholder="如：特別加強肩頸腰臀、力道偏柔/偏重、約會需求等" class="w-full bg-white border border-stone-300 rounded-xl px-3.5 py-2.5 text-xs text-stone-900 focus:outline-none focus:border-amber-500">
+            </div>
+          </div>
+
+          <!-- 即時預約摘要小卡 (對照 STR 預約摘要) -->
+          <div class="bg-amber-50/70 rounded-2xl p-4 border border-amber-200 space-y-2 text-xs">
+            <div class="text-xs font-bold text-stone-900 mb-1 flex items-center gap-1.5">
+              <i class="fas fa-file-invoice text-amber-600"></i> 預約摘要
+            </div>
+            <div class="flex justify-between text-stone-600">
+              <span><i class="fas fa-gem text-amber-600 mr-1"></i> 師傅</span>
+              <span id="sum-master-name" class="font-bold text-rose-700">-</span>
+            </div>
+            <div class="flex justify-between text-stone-600">
+              <span><i class="fas fa-spa text-amber-600 mr-1"></i> 服務</span>
+              <span id="sum-service-name" class="font-bold text-stone-900">-</span>
+            </div>
+            <div class="flex justify-between text-stone-600">
+              <span><i class="far fa-clock text-amber-600 mr-1"></i> 時長</span>
+              <span id="sum-duration" class="font-bold text-stone-900">-</span>
+            </div>
+            <div class="flex justify-between text-stone-600">
+              <span><i class="far fa-calendar text-amber-600 mr-1"></i> 時間</span>
+              <span id="sum-datetime" class="font-bold text-amber-700 font-mono">請於上方點選時段</span>
+            </div>
+            <div class="flex justify-between text-stone-700 pt-2 border-t border-amber-200 text-sm font-bold">
+              <span>預估金額</span>
+              <span id="sum-total-price" class="text-amber-700 font-mono font-bold">NT$ 0</span>
+            </div>
+          </div>
+
+          <!-- 按鈕列：上一步 / 下一步 -->
+          <div class="flex gap-3">
+            <button type="button" onclick="goToStep(1)" class="flex-1 py-3.5 rounded-xl bg-stone-100 hover:bg-stone-200 active:scale-95 text-stone-700 font-bold text-xs transition-all border border-stone-200 cursor-pointer">
+              <i class="fas fa-arrow-left mr-1"></i> 上一步
+            </button>
+            <button type="button" id="btn-goto-step-3" onclick="goToStep(3)" class="flex-[2] py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-rose-500 hover:brightness-105 active:scale-95 text-white font-bold text-xs tracking-wider transition-all shadow-md shadow-amber-600/30 flex items-center justify-center gap-2 cursor-pointer">
+              <span>下一步 · 確認送出</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════════════════════ -->
+        <!-- 步驟 3：確認訂單 ＆ LINE 送出 (對照 STR 排版) -->
+        <!-- ════════════════════════════════════════════════════════════ -->
+        <div id="step-content-3" class="hidden space-y-4">
+          <h4 class="text-base font-bold text-stone-900 tracking-wide flex items-center gap-2">
+            <i class="fas fa-clipboard-check text-amber-600"></i> 第三步：確認訂單 · LINE 送出
+          </h4>
+
+          <!-- 綠色 LINE 送出大按鈕 (置頂最醒目，對齊 STR) -->
+          <div>
+            <a id="btn-line-dispatch-main" href="#" onclick="submitBookingToLine(event)" class="w-full py-4 rounded-2xl btn-line-dispatch text-base font-black tracking-widest flex items-center justify-center gap-2 text-white no-underline shadow-xl shadow-emerald-600/30 cursor-pointer">
+              <i class="fab fa-line text-2xl"></i>
+              <span>送出預約、待專人確認</span>
+            </a>
+          </div>
+
+          <!-- 若沒有跳轉直接複製框 (對照 STR 樣式) -->
+          <div class="bg-stone-50 border border-emerald-500/40 rounded-2xl p-4 space-y-2.5">
+            <div class="flex items-center justify-between border-b border-stone-200 pb-2">
+              <span class="text-xs font-bold text-stone-800 flex items-center gap-1.5">
+                <i class="fas fa-info-circle text-amber-600"></i> 若沒有跳轉請直接複製以下：
+              </span>
+              <button type="button" onclick="copyPreviewText()" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 shadow-md shadow-emerald-600/30 transition-all cursor-pointer">
+                <i class="far fa-copy"></i> 一鍵複製
+              </button>
+            </div>
+            
+            <pre id="booking-preview-text" class="text-xs text-stone-800 font-mono whitespace-pre-wrap leading-relaxed bg-white p-3.5 rounded-xl border border-stone-200 select-all"></pre>
+
+            <p class="text-[11px] text-stone-500 leading-relaxed text-center">
+              💡 複製後，請直接在 LINE 聊天室中 <span class="text-amber-800 font-bold">「貼上」並發送</span>，小幫手將即刻為您確認！
+            </p>
+          </div>
+
+          <!-- 成功複製 Toast 提示 (對照 STR) -->
+          <div id="copy-toast" class="hidden bg-emerald-600 text-white text-xs font-bold py-2.5 px-4 rounded-xl text-center shadow-lg">
+            <i class="fas fa-check-circle mr-1"></i> 已成功複製預約內容！請直接在 LINE 聊天室貼上送出。
+          </div>
+
+          <!-- 警告提示盒 -->
+          <div class="bg-amber-50 border border-amber-300 rounded-xl p-3 text-center space-y-1">
+            <p class="text-xs text-amber-900 font-medium">
+              送出後 <span class="bg-amber-200/80 px-1.5 py-0.5 rounded text-amber-900 font-bold">請等待小編回覆確認</span> 即可保留尊榮檔期
+            </p>
+          </div>
+
+          <!-- 按鈕列：返回修改 (對照 STR) -->
+          <div class="pt-1">
+            <button type="button" onclick="goToStep(2)" class="w-full py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold text-xs transition-all cursor-pointer">
+              <i class="fas fa-arrow-left mr-1"></i> 返回修改資料
+            </button>
+          </div>
+
+          <!-- 預約摘要小卡 (底部) -->
+          <div class="bg-white rounded-2xl p-4 border border-stone-200 space-y-2 text-xs">
+            <div class="flex justify-between text-stone-600">
+              <span>✨ 服務項目</span>
+              <span id="final-sum-service" class="font-bold text-stone-900">-</span>
+            </div>
+            <div class="flex justify-between text-stone-600">
+              <span>⏱️ 服務時長</span>
+              <span id="final-sum-duration" class="font-bold text-stone-900">-</span>
+            </div>
+            <div class="flex justify-between text-stone-600">
+              <span>📅 預約時間</span>
+              <span id="final-sum-datetime" class="font-bold text-amber-700 font-mono">-</span>
+            </div>
+            <div class="flex justify-between text-stone-700 pt-1.5 border-t border-stone-100 font-bold">
+              <span>預估金額</span>
+              <span id="final-sum-price" class="text-amber-700 font-mono font-bold">-</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════════
+       MODALS：大圖燈箱 (Lightbox)、評價 (Review)、LINE 跳轉彈窗
+       ════════════════════════════════════════════════════════════ -->
+
+  <!-- 1. Lightbox 燈箱 Modal (全螢幕瀏覽高清師傅相簿) -->
+  <div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col justify-between p-4">
+    <div class="flex justify-end pt-2 pr-2">
+      <button onclick="closeLightbox()" class="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center text-lg hover:bg-white/30">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div id="lightbox-img-container" class="flex-1 flex items-center justify-center overflow-hidden">
+      <img id="lightbox-img" src="" class="max-h-[80vh] max-w-full object-contain rounded-xl shadow-2xl">
+    </div>
+    <div class="flex justify-center items-center gap-2 pb-6" id="lightbox-dots"></div>
+  </div>
+
+  <!-- 2. Review 顧客真實評價 Modal -->
+  <div id="review-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white border border-amber-300 w-full max-w-md rounded-2xl p-6 shadow-2xl space-y-4 max-h-[85vh] flex flex-col text-stone-800">
+      <div class="flex justify-between items-center border-b border-stone-200 pb-3">
+        <div>
+          <h3 class="text-base font-bold text-stone-900 flex items-center gap-2">
+            <span id="review-modal-master-name">芳療師</span> 顧客真實評價
+          </h3>
+          <p id="review-modal-score" class="text-xs text-amber-700 font-semibold mt-0.5">⭐ 10.0 滿分推薦</p>
+        </div>
+        <button onclick="closeReviewModal()" class="w-8 h-8 rounded-full bg-stone-100 text-stone-500 hover:text-stone-900 flex items-center justify-center">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div id="review-list-container" class="flex-1 overflow-y-auto space-y-3 pr-1">
+        <!-- 由 JS 動態注入評價清單 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. LINE 跳轉提示彈窗 -->
+  <div id="line-redirect-modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white border border-emerald-500/40 w-full max-w-sm rounded-2xl p-6 shadow-2xl space-y-4 text-center text-stone-800">
+      <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-xl">
+        <i class="fab fa-line"></i>
+      </div>
+      <h3 class="text-base font-bold text-stone-900">預約單已生成！即刻開啟 LINE</h3>
+      <p class="text-xs text-stone-600 leading-relaxed">
+        系統已為您備妥預約內容並複製！若手機未自動開啟 LINE 聊天室，請點擊下方按鈕前往：
+      </p>
+      <div class="space-y-2 pt-2">
+        <a id="btn-open-line-url" href="#" target="_blank" class="block w-full py-3 rounded-xl btn-line-dispatch text-xs font-black tracking-widest text-white">
+          立即開啟 LINE 聊天室發送
+        </a>
+        <button onclick="closeLineRedirectModal()" class="w-full py-2 rounded-xl bg-stone-100 text-stone-600 text-xs">
+          返回網站
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部版權宣告 -->
+  <footer class="text-center text-xs text-stone-500 py-6 border-t border-amber-200/80 space-y-1">
+    <p>© 2026 OPA SPA | 女性專屬帥哥按摩舒壓 · 營業時間 24H 預約制</p>
+    <p class="text-[10px] text-stone-400">雙北西門工作室 · 雙北/台中/高雄 外出到府旅館服務</p>
+  </footer>
+
+  <!-- 前端 JavaScript 核心 (加上版本號確保手機與瀏覽器即時載入最新代碼) -->
+  <script src="static/js/customer.js?v=5.0"></script>
+</body>
+</html>

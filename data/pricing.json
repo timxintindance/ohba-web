@@ -1,0 +1,21 @@
+{
+  "brand_name": "OPA SPA | 女性專屬帥哥按摩舒壓",
+  "brand_subtitle": "女性客群專屬 · 精選帥哥芳療舒壓",
+  "line_bot_id": "@973sfpws",
+  "line_oa_url": "https://line.me/R/oaMessage/@973sfpws/",
+  "pricing": {
+    "course_premium_120": 3600,
+    "addon_time_30min": 600,
+    "couple_surcharge": 500,
+    "studio_vip_ximen": 400,
+    "midnight_surcharge": 500,
+    "midnight_start_hour": 23,
+    "midnight_end_hour": 6
+  },
+  "rules": {
+    "attire_notice": "可外出到府旅館",
+    "remote_transport_notice": "較偏遠地區，會依照不同師傅距離收費，小編會提前告知您費用！",
+    "studio_notice": "雙北可在西門工作室（$400清潔費，獨立包廂空間）"
+  },
+  "safety_notice": "專注專業芳療與深層放鬆體驗。"
+}
