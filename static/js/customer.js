@@ -1884,7 +1884,7 @@ window.calculatePrice = function() {
   let isMidnight = false;
   if (selectedTime) {
     const [h] = selectedTime.split(':').map(Number);
-    if (h >= 23 || h <= 2) {
+    if (h >= 23 || h < 6) {
       isMidnight = true;
       total += 500;
     }
@@ -1995,21 +1995,13 @@ async function loadSlotsForDate(dateStr) {
   container.innerHTML = '<div class="col-span-full py-8 text-center text-xs text-stone-500"><i class="fas fa-spinner fa-spin mr-1 text-amber-600"></i> 即時連線時段中...</div>';
 
   try {
-    // 產生營業時間 09:00 - 02:00 時段 (09:00~23:30 及次日 00:00~02:00，共 35 格)
     function generate48Slots() {
       const list = [];
-      // 當日 09:00 ~ 23:30
-      for (let h = 9; h < 24; h++) {
+      for (let h = 0; h < 24; h++) {
         const hh = String(h).padStart(2, '0');
         list.push({ time: `${hh}:00`, status: 'available' });
         list.push({ time: `${hh}:30`, status: 'available' });
       }
-      // 次日凌晨 00:00 ~ 02:00
-      list.push({ time: '00:00', status: 'available' });
-      list.push({ time: '00:30', status: 'available' });
-      list.push({ time: '01:00', status: 'available' });
-      list.push({ time: '01:30', status: 'available' });
-      list.push({ time: '02:00', status: 'available' });
       return list;
     }
 
@@ -2033,12 +2025,7 @@ async function loadSlotsForDate(dateStr) {
       return;
     }
 
-    // 依營業時間順序排序：09:00~23:30 排前面，00:00~02:00 排後面
-    function slotOrder(t) {
-      const [h, m] = t.split(':').map(Number);
-      return (h < 5 ? h + 24 : h) * 60 + m;
-    }
-    slots.sort((a, b) => slotOrder(a.time) - slotOrder(b.time));
+    slots.sort((a, b) => timeToMinutes(a.time) - timeToMinutes(b.time));
 
     // 自動預選：若當前沒選中任何時段，優先選晚間熱門時段 20:00 或第一個可用時段
     const availableSlots = slots.filter(s => s.status === 'available');
@@ -2053,7 +2040,7 @@ async function loadSlotsForDate(dateStr) {
       const isAvailable = !isLocked;
       const isSelected = (selectedTime === s.time);
       const [h] = s.time.split(':').map(Number);
-      const isMidnight = (h >= 23 || h <= 2);
+      const isMidnight = (h >= 23 || h < 6);
 
       const box = document.createElement('div');
       box.className = `slot-box p-2.5 text-center relative cursor-pointer transition-all ${isLocked ? 'locked' : ''} ${isSelected ? 'active' : ''}`;
