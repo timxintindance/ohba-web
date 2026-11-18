@@ -9,7 +9,7 @@ let selectedTime = null;
 let currentRegion = '全部';
 let currentServiceCategoryFilter = '全部';
 let lineBotId = '@973sfpws';
-let studioFee = 400; // 西門工作室預設 $400
+let studioFee = 0; // 預設外出服務 ($0，車馬費另計)
 
 // 燈箱狀態
 let currentLightboxImages = [];
@@ -1825,12 +1825,12 @@ function updateMasterDisplay() {
 // 4. 地點切換
 window.onLocationChange = function() {
   const locRadios = document.getElementsByName('location-type');
-  let chosen = '雙北西門工作室';
+  let chosen = '外出到府/指定飯店';
   for (let r of locRadios) {
     if (r.checked) chosen = r.value;
   }
   const customBox = document.getElementById('custom-address-box');
-  if (chosen.includes('外出到府')) {
+  if (chosen.includes('外出到府') || chosen.includes('飯店') || chosen.includes('外出服務')) {
     studioFee = 0;
     if (customBox) customBox.classList.remove('hidden');
   } else {
@@ -2177,7 +2177,7 @@ function buildPreviewText() {
   }
 
   // 服務地點
-  let loc = '雙北西門工作室';
+  let loc = '外出服務 (待專人確認地址)';
   const locRadios = document.getElementsByName('location-type');
   for (let r of locRadios) {
     if (r.checked) {

@@ -461,7 +461,18 @@
             <div class="space-y-2">
               <label class="flex items-center justify-between bg-white border border-stone-200 rounded-xl p-3 cursor-pointer hover:border-amber-300 transition-all">
                 <div class="flex items-center gap-2.5">
-                  <input type="radio" name="location-type" value="雙北西門工作室" checked onchange="onLocationChange()" class="w-4 h-4 text-amber-600">
+                  <input type="radio" name="location-type" value="外出到府/指定飯店" checked onchange="onLocationChange()" class="w-4 h-4 text-amber-600">
+                  <div>
+                    <span class="text-xs font-bold text-stone-900">外出服務 (住家 / 飯店)</span>
+                    <p class="text-[10px] text-amber-700 font-semibold">※ 車馬費另計 (雙北/台中/高雄皆可預約到府旅館)</p>
+                  </div>
+                </div>
+                <span class="text-xs font-bold text-stone-500">車馬費另計</span>
+              </label>
+
+              <label class="flex items-center justify-between bg-white border border-stone-200 rounded-xl p-3 cursor-pointer hover:border-amber-300 transition-all">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="location-type" value="雙北西門工作室" onchange="onLocationChange()" class="w-4 h-4 text-amber-600">
                   <div>
                     <div class="flex items-center gap-1.5">
                       <span class="text-xs font-bold text-stone-900">雙北西門工作室</span>
@@ -474,21 +485,10 @@
                 </div>
                 <span class="text-xs font-bold text-amber-700 font-mono">+NT$ 400</span>
               </label>
-
-              <label class="flex items-center justify-between bg-white border border-stone-200 rounded-xl p-3 cursor-pointer hover:border-amber-300 transition-all">
-                <div class="flex items-center gap-2.5">
-                  <input type="radio" name="location-type" value="外出到府/指定飯店" onchange="onLocationChange()" class="w-4 h-4 text-amber-600">
-                  <div>
-                    <span class="text-xs font-bold text-stone-900">外出服務 (住家 / 飯店)</span>
-                    <p class="text-[10px] text-amber-700 font-semibold">※ 車馬費另計 (雙北/台中/高雄皆可預約到府旅館)</p>
-                  </div>
-                </div>
-                <span class="text-xs font-bold text-stone-500">車馬費另計</span>
-              </label>
             </div>
 
-            <!-- 外出詳細地址填寫框 -->
-            <div id="custom-address-box" class="hidden mt-2">
+            <!-- 外出詳細地址填寫框 (預設展開) -->
+            <div id="custom-address-box" class="mt-2">
               <label class="block text-[11px] font-bold text-amber-800 mb-1">
                 <i class="fas fa-home mr-1"></i> 請填寫完整外出地址（住家或飯店房號）*
               </label>
@@ -704,6 +704,6 @@
   </footer>
 
   <!-- 前端 JavaScript 核心 (加上版本號確保手機與瀏覽器即時載入最新代碼) -->
-  <script src="static/js/customer.js?v=7.5"></script>
+  <script src="static/js/customer.js?v=7.6"></script>
 </body>
 </html>
