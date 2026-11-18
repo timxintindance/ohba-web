@@ -197,7 +197,6 @@ function renderServices() {
         </div>
       </div>
       <div class="text-right flex-shrink-0 pl-3">
-        ${srv.price_original ? `<span class="text-[11px] text-stone-400 line-through block">NT$ ${srv.price_original.toLocaleString()}</span>` : ''}
         <span class="text-base font-bold text-amber-700 font-mono">NT$ ${srv.price.toLocaleString()}</span>
       </div>
     `;
