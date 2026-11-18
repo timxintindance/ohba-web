@@ -1761,7 +1761,7 @@ window.filterRegion = function(reg) {
 function populateMasterSelect() {
   const sel = document.getElementById('booking-master-select');
   if (!sel) return;
-  sel.innerHTML = '<option value="" disabled selected>請選擇指定芳療師</option>';
+  sel.innerHTML = '<option value="" disabled selected>請選擇指定師傅</option>';
   allMasters.forEach(m => {
     sel.innerHTML += `<option value="${m.name}">${m.name} (${m.region} · ${m.height}cm / ${m.weight}kg · ${m.age}歲)</option>`;
   });
