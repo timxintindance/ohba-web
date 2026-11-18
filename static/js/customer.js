@@ -2039,36 +2039,23 @@ async function loadSlotsForDate(dateStr) {
       const isLocked = s.status === 'locked' || s.status === 'pending';
       const isAvailable = !isLocked;
       const isSelected = (selectedTime === s.time);
-      const [h] = s.time.split(':').map(Number);
-      const isMidnight = (h >= 23 || h < 6);
 
       const box = document.createElement('div');
-      box.className = `slot-box p-2.5 text-center relative cursor-pointer transition-all ${isLocked ? 'locked' : ''} ${isSelected ? 'active' : ''}`;
+      box.className = `slot-box py-3 px-2 text-center relative cursor-pointer transition-all flex items-center justify-center font-mono text-sm font-semibold tracking-wider ${isLocked ? 'locked opacity-40 cursor-not-allowed bg-stone-100 text-stone-400' : isSelected ? 'active border-amber-600 bg-amber-600 text-white shadow-sm' : 'border border-stone-200 bg-white text-stone-800 hover:border-amber-400 hover:bg-amber-50/30'}`;
 
-      box.innerHTML = `
-        <span class="block text-xs font-mono font-bold tracking-wider">${s.time}</span>
-        <span class="block text-[9px] mt-0.5 ${isLocked ? 'text-stone-400' : isSelected ? 'text-rose-600 font-bold' : 'text-amber-700 font-semibold'}">
-          ${isLocked ? '已約滿' : isSelected ? '已選中' : '可預約'}
-        </span>
-        ${isMidnight && isAvailable ? '<span class="absolute -top-1 -right-1 text-[8px] bg-rose-100 text-rose-700 border border-rose-200 px-1 rounded-full font-bold">夜</span>' : ''}
-      `;
+      box.innerText = s.time;
 
       if (isAvailable) {
         box.onclick = () => {
           document.querySelectorAll('.slot-box').forEach(b => {
-            b.classList.remove('active');
-            const sub = b.querySelector('span:nth-child(2)');
-            if (sub && !b.classList.contains('locked')) {
-              sub.className = 'block text-[9px] mt-0.5 text-amber-700 font-semibold';
-              sub.innerText = '可預約';
+            if (!b.classList.contains('locked')) {
+              b.classList.remove('active', 'border-amber-600', 'bg-amber-600', 'text-white', 'shadow-sm');
+              b.classList.add('border', 'border-stone-200', 'bg-white', 'text-stone-800');
             }
           });
-          box.classList.add('active');
-          const mySub = box.querySelector('span:nth-child(2)');
-          if (mySub) {
-            mySub.className = 'block text-[9px] mt-0.5 text-rose-600 font-bold';
-            mySub.innerText = '已選中';
-          }
+          box.classList.add('active', 'border-amber-600', 'bg-amber-600', 'text-white', 'shadow-sm');
+          box.classList.remove('border-stone-200', 'bg-white', 'text-stone-800');
+
           selectedTime = s.time;
           updateSummaryDisplay();
           calculatePrice();
