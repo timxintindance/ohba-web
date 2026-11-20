@@ -242,10 +242,10 @@ const EMBEDDED_MASTERS = [
       "觀察入微"
     ],
     "bio": "身形標準 (184cm/82kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
-    "avatar": "/static/masters/date_club/Calvin.jpg",
+    "avatar": "/static/masters/date_club/Calvin.webp",
     "images": [
-      "/static/masters/date_club/Calvin.jpg",
-      "/static/masters/taipei/Calvin.jpg"
+      "/static/masters/date_club/Calvin.webp",
+      "/static/masters/taipei/Calvin.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -275,10 +275,10 @@ const EMBEDDED_MASTERS = [
       "活潑開朗"
     ],
     "bio": "身形標準 (177cm/75kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
-    "avatar": "/static/masters/date_club/Circle.jpg",
+    "avatar": "/static/masters/date_club/Circle.webp",
     "images": [
-      "/static/masters/date_club/Circle.jpg",
-      "/static/masters/taipei/Circle.jpg"
+      "/static/masters/date_club/Circle.webp",
+      "/static/masters/taipei/Circle.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -308,10 +308,10 @@ const EMBEDDED_MASTERS = [
       "相處有趣"
     ],
     "bio": "身形標準 (182cm/70kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
-    "avatar": "/static/masters/date_club/Finn.jpg",
+    "avatar": "/static/masters/date_club/Finn.webp",
     "images": [
-      "/static/masters/date_club/Finn.jpg",
-      "/static/masters/taipei/Finn.jpg"
+      "/static/masters/date_club/Finn.webp",
+      "/static/masters/taipei/Finn.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -341,10 +341,10 @@ const EMBEDDED_MASTERS = [
       "溫柔健談"
     ],
     "bio": "身形標準 (175cm/70kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
-    "avatar": "/static/masters/date_club/Tyler.jpg",
+    "avatar": "/static/masters/date_club/Tyler.webp",
     "images": [
-      "/static/masters/date_club/Tyler.jpg",
-      "/static/masters/taipei/Tyler.jpg"
+      "/static/masters/date_club/Tyler.webp",
+      "/static/masters/taipei/Tyler.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -371,10 +371,10 @@ const EMBEDDED_MASTERS = [
       "一日男友首選"
     ],
     "bio": "身形標準 (186cm/70kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
-    "avatar": "/static/masters/date_club/Vito.jpg",
+    "avatar": "/static/masters/date_club/Vito.webp",
     "images": [
-      "/static/masters/date_club/Vito.jpg",
-      "/static/masters/taipei/Vito.jpg"
+      "/static/masters/date_club/Vito.webp",
+      "/static/masters/taipei/Vito.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -401,10 +401,10 @@ const EMBEDDED_MASTERS = [
       "一日男友首選"
     ],
     "bio": "身形標準 (177cm/68kg)，性格細膩紳士。擅長傾聽陪伴、約會伴遊與溫柔舒壓，深受女性貴賓高度好評與指名。",
-    "avatar": "/static/masters/date_club/Wayne.jpg",
+    "avatar": "/static/masters/date_club/Wayne.webp",
     "images": [
-      "/static/masters/date_club/Wayne.jpg",
-      "/static/masters/taipei/Wayne.jpg"
+      "/static/masters/date_club/Wayne.webp",
+      "/static/masters/taipei/Wayne.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -433,9 +433,9 @@ const EMBEDDED_MASTERS = [
       "台中人氣"
     ],
     "bio": "台中地區專屬服務芳療男師 (176cm/73kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
-    "avatar": "/static/masters/taichung/Alan.jpg",
+    "avatar": "/static/masters/taichung/Alan.webp",
     "images": [
-      "/static/masters/taichung/Alan.jpg"
+      "/static/masters/taichung/Alan.webp"
     ],
     "specialties": [
       "指壓油壓雙重手法",
@@ -466,10 +466,10 @@ const EMBEDDED_MASTERS = [
       "台中人氣"
     ],
     "bio": "台中地區專屬服務芳療男師 (177cm/70kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
-    "avatar": "/static/masters/kaohsiung/Frank.jpg",
+    "avatar": "/static/masters/kaohsiung/Frank.webp",
     "images": [
-      "/static/masters/kaohsiung/Frank.jpg",
-      "/static/masters/taichung/Frank.jpg"
+      "/static/masters/kaohsiung/Frank.webp",
+      "/static/masters/taichung/Frank.webp"
     ],
     "specialties": [
       "指壓油壓雙重手法",
@@ -498,9 +498,9 @@ const EMBEDDED_MASTERS = [
       "台中人氣"
     ],
     "bio": "台中地區專屬服務芳療男師 (183cm/88kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
-    "avatar": "/static/masters/taichung/HANK.jpg",
+    "avatar": "/static/masters/taichung/HANK.webp",
     "images": [
-      "/static/masters/taichung/HANK.jpg"
+      "/static/masters/taichung/HANK.webp"
     ],
     "specialties": [
       "指壓油壓雙重手法",
@@ -529,9 +529,9 @@ const EMBEDDED_MASTERS = [
       "台中人氣"
     ],
     "bio": "台中地區專屬服務芳療男師 (176cm/74kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
-    "avatar": "/static/masters/taichung/LG.jpg",
+    "avatar": "/static/masters/taichung/LG.webp",
     "images": [
-      "/static/masters/taichung/LG.jpg"
+      "/static/masters/taichung/LG.webp"
     ],
     "specialties": [
       "指壓油壓雙重手法",
@@ -560,9 +560,9 @@ const EMBEDDED_MASTERS = [
       "台中人氣"
     ],
     "bio": "台中地區專屬服務芳療男師 (176cm/79kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
-    "avatar": "/static/masters/taichung/Nat.jpg",
+    "avatar": "/static/masters/taichung/Nat.webp",
     "images": [
-      "/static/masters/taichung/Nat.jpg"
+      "/static/masters/taichung/Nat.webp"
     ],
     "specialties": [
       "指壓油壓雙重手法",
@@ -591,9 +591,9 @@ const EMBEDDED_MASTERS = [
       "台中人氣"
     ],
     "bio": "台中地區專屬服務芳療男師 (176cm/60kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
-    "avatar": "/static/masters/taichung/RJ.jpg",
+    "avatar": "/static/masters/taichung/RJ.webp",
     "images": [
-      "/static/masters/taichung/RJ.jpg"
+      "/static/masters/taichung/RJ.webp"
     ],
     "specialties": [
       "指壓油壓雙重手法",
@@ -622,9 +622,9 @@ const EMBEDDED_MASTERS = [
       "台中人氣"
     ],
     "bio": "台中地區專屬服務芳療男師 (178cm/66kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
-    "avatar": "/static/masters/taichung/SS.jpg",
+    "avatar": "/static/masters/taichung/SS.webp",
     "images": [
-      "/static/masters/taichung/SS.jpg"
+      "/static/masters/taichung/SS.webp"
     ],
     "specialties": [
       "指壓油壓雙重手法",
@@ -653,9 +653,9 @@ const EMBEDDED_MASTERS = [
       "台中人氣"
     ],
     "bio": "台中地區專屬服務芳療男師 (180cm/60kg)。以溫潤流暢手法搭配特選精油，專業到府與旅館服務，為您舒解整日疲憊。",
-    "avatar": "/static/masters/taichung/SUN.jpg",
+    "avatar": "/static/masters/taichung/SUN.webp",
     "images": [
-      "/static/masters/taichung/SUN.jpg"
+      "/static/masters/taichung/SUN.webp"
     ],
     "specialties": [
       "指壓油壓雙重手法",
@@ -684,9 +684,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (175cm/65kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Ace.jpg",
+    "avatar": "/static/masters/taipei/Ace.webp",
     "images": [
-      "/static/masters/taipei/Ace.jpg"
+      "/static/masters/taipei/Ace.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -715,9 +715,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (180cm/74kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Bryant.jpg",
+    "avatar": "/static/masters/taipei/Bryant.webp",
     "images": [
-      "/static/masters/taipei/Bryant.jpg"
+      "/static/masters/taipei/Bryant.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -746,9 +746,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (179cm/77kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Charles.jpg",
+    "avatar": "/static/masters/taipei/Charles.webp",
     "images": [
-      "/static/masters/taipei/Charles.jpg"
+      "/static/masters/taipei/Charles.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -777,9 +777,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (175cm/75kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Eric.jpg",
+    "avatar": "/static/masters/taipei/Eric.webp",
     "images": [
-      "/static/masters/taipei/Eric.jpg"
+      "/static/masters/taipei/Eric.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -808,9 +808,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (175cm/66kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Ethan.jpg",
+    "avatar": "/static/masters/taipei/Ethan.webp",
     "images": [
-      "/static/masters/taipei/Ethan.jpg"
+      "/static/masters/taipei/Ethan.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -839,9 +839,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (191cm/81kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/ICE.jpg",
+    "avatar": "/static/masters/taipei/ICE.webp",
     "images": [
-      "/static/masters/taipei/ICE.jpg"
+      "/static/masters/taipei/ICE.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -870,9 +870,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (175cm/63kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/J.jpg",
+    "avatar": "/static/masters/taipei/J.webp",
     "images": [
-      "/static/masters/taipei/J.jpg"
+      "/static/masters/taipei/J.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -901,9 +901,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (172cm/56kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Jax.jpg",
+    "avatar": "/static/masters/taipei/Jax.webp",
     "images": [
-      "/static/masters/taipei/Jax.jpg"
+      "/static/masters/taipei/Jax.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -932,10 +932,10 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (177cm/73kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Jay.jpg",
+    "avatar": "/static/masters/taipei/Jay.webp",
     "images": [
-      "/static/masters/taipei/Jay.jpg",
-      "/static/masters/taipei/Jay 2.jpg"
+      "/static/masters/taipei/Jay.webp",
+      "/static/masters/taipei/Jay 2.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -964,9 +964,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (175cm/66kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Kevin.jpg",
+    "avatar": "/static/masters/taipei/Kevin.webp",
     "images": [
-      "/static/masters/taipei/Kevin.jpg"
+      "/static/masters/taipei/Kevin.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -995,9 +995,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (178cm/70kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/P.jpg",
+    "avatar": "/static/masters/taipei/P.webp",
     "images": [
-      "/static/masters/taipei/P.jpg"
+      "/static/masters/taipei/P.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1026,9 +1026,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (188cm/86kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/R.jpg",
+    "avatar": "/static/masters/taipei/R.webp",
     "images": [
-      "/static/masters/taipei/R.jpg"
+      "/static/masters/taipei/R.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1057,9 +1057,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (176cm/60kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/RJ.jpg",
+    "avatar": "/static/masters/taipei/RJ.webp",
     "images": [
-      "/static/masters/taipei/RJ.jpg"
+      "/static/masters/taipei/RJ.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1088,9 +1088,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (176cm/81kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/RY.jpg",
+    "avatar": "/static/masters/taipei/RY.webp",
     "images": [
-      "/static/masters/taipei/RY.jpg"
+      "/static/masters/taipei/RY.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1119,9 +1119,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (180cm/75kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Rex.jpg",
+    "avatar": "/static/masters/taipei/Rex.webp",
     "images": [
-      "/static/masters/taipei/Rex.jpg"
+      "/static/masters/taipei/Rex.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1150,9 +1150,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (182cm/80kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Ryan.jpg",
+    "avatar": "/static/masters/taipei/Ryan.webp",
     "images": [
-      "/static/masters/taipei/Ryan.jpg"
+      "/static/masters/taipei/Ryan.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1181,11 +1181,11 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (180cm/86kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/S_1.jpg",
+    "avatar": "/static/masters/taipei/S_1.webp",
     "images": [
-      "/static/masters/taipei/S_1.jpg",
-      "/static/masters/taipei/S_2.jpg",
-      "/static/masters/taipei/S_2.jpg"
+      "/static/masters/taipei/S_1.webp",
+      "/static/masters/taipei/S_2.webp",
+      "/static/masters/taipei/S_2.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1214,9 +1214,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (182cm/87kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Sunny.jpg",
+    "avatar": "/static/masters/taipei/Sunny.webp",
     "images": [
-      "/static/masters/taipei/Sunny.jpg"
+      "/static/masters/taipei/Sunny.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1245,9 +1245,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (175cm/73kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Taeyang.jpg",
+    "avatar": "/static/masters/taipei/Taeyang.webp",
     "images": [
-      "/static/masters/taipei/Taeyang.jpg"
+      "/static/masters/taipei/Taeyang.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1276,9 +1276,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (172cm/65kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Venson.jpg",
+    "avatar": "/static/masters/taipei/Venson.webp",
     "images": [
-      "/static/masters/taipei/Venson.jpg"
+      "/static/masters/taipei/Venson.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1307,9 +1307,9 @@ const EMBEDDED_MASTERS = [
       "雙北推薦"
     ],
     "bio": "雙北地區資深男師 (182cm/70kg)。注重女性貴賓私密感受與力道偏好，手法純熟細膩，提供頂級西門工作室與外出到府舒壓體驗。",
-    "avatar": "/static/masters/taipei/Wei.jpg",
+    "avatar": "/static/masters/taipei/Wei.webp",
     "images": [
-      "/static/masters/taipei/Wei.jpg"
+      "/static/masters/taipei/Wei.webp"
     ],
     "specialties": [
       "高級指油壓芳療",
@@ -1339,9 +1339,9 @@ const EMBEDDED_MASTERS = [
       "手法細緻"
     ],
     "bio": "身形挺拔勻稱 (180cm/80kg)，性格沉穩紳士。擅長傾聽陪伴、溫潤推拿舒壓，深受女性貴賓高度好評與指名。",
-    "avatar": "/static/masters/kaohsiung/TP.jpg",
+    "avatar": "/static/masters/kaohsiung/TP.webp",
     "images": [
-      "/static/masters/kaohsiung/TP.jpg"
+      "/static/masters/kaohsiung/TP.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -1371,9 +1371,9 @@ const EMBEDDED_MASTERS = [
       "深層釋壓"
     ],
     "bio": "標準修長身形 (178cm/75kg)，性格細膩溫柔。擅長約會伴遊與深層放鬆，營造專屬浪漫舒適時光。",
-    "avatar": "/static/masters/kaohsiung/MAX.jpg",
+    "avatar": "/static/masters/kaohsiung/MAX.webp",
     "images": [
-      "/static/masters/kaohsiung/MAX.jpg"
+      "/static/masters/kaohsiung/MAX.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -1403,9 +1403,9 @@ const EMBEDDED_MASTERS = [
       "專業舒壓"
     ],
     "bio": "健美結實身材 (179cm/78kg)，陽光成熟魅力。手法剛柔並濟，擅長運動釋壓與貼心陪伴。",
-    "avatar": "/static/masters/kaohsiung/ZEUS.jpg",
+    "avatar": "/static/masters/kaohsiung/ZEUS.webp",
     "images": [
-      "/static/masters/kaohsiung/ZEUS.jpg"
+      "/static/masters/kaohsiung/ZEUS.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -1435,9 +1435,9 @@ const EMBEDDED_MASTERS = [
       "溫柔貼心"
     ],
     "bio": "高挑挺拔陽光身形 (185cm/78kg)，性格親切開朗。擅長溫柔陪伴與經絡放鬆，深受貴賓青睞。",
-    "avatar": "/static/masters/kaohsiung/QQ.jpg",
+    "avatar": "/static/masters/kaohsiung/QQ.webp",
     "images": [
-      "/static/masters/kaohsiung/QQ.jpg"
+      "/static/masters/kaohsiung/QQ.webp"
     ],
     "specialties": [
       "一日男友約會陪伴",
@@ -1465,9 +1465,9 @@ const EMBEDDED_MASTERS = [
       "深層放鬆"
     ],
     "bio": "",
-    "avatar": "/static/masters/taipei/Justin.jpg",
+    "avatar": "/static/masters/taipei/Justin.webp",
     "images": [
-      "/static/masters/taipei/Justin.jpg"
+      "/static/masters/taipei/Justin.webp"
     ],
     "specialties": [
       "油壓舒壓",
@@ -1493,9 +1493,9 @@ const EMBEDDED_MASTERS = [
       "親切體貼"
     ],
     "bio": "",
-    "avatar": "/static/masters/taipei/Lin.jpg",
+    "avatar": "/static/masters/taipei/Lin.webp",
     "images": [
-      "/static/masters/taipei/Lin.jpg"
+      "/static/masters/taipei/Lin.webp"
     ],
     "specialties": [
       "油壓舒壓",
@@ -1521,9 +1521,9 @@ const EMBEDDED_MASTERS = [
       "深層指壓"
     ],
     "bio": "",
-    "avatar": "/static/masters/taipei/Luc.jpg",
+    "avatar": "/static/masters/taipei/Luc.webp",
     "images": [
-      "/static/masters/taipei/Luc.jpg"
+      "/static/masters/taipei/Luc.webp"
     ],
     "specialties": [
       "油壓舒壓",
@@ -1549,9 +1549,9 @@ const EMBEDDED_MASTERS = [
       "手法細緻"
     ],
     "bio": "",
-    "avatar": "/static/masters/taipei/Scott.jpg",
+    "avatar": "/static/masters/taipei/Scott.webp",
     "images": [
-      "/static/masters/taipei/Scott.jpg"
+      "/static/masters/taipei/Scott.webp"
     ],
     "specialties": [
       "油壓舒壓",
@@ -1578,9 +1578,9 @@ const EMBEDDED_MASTERS = [
       "雙北特約"
     ],
     "bio": "身形標準 (174cm/70kg)，性格溫和親切。專精女性芳療舒壓與深層筋膜放鬆，手法沉穩細膩，備受女性貴賓喜愛。",
-    "avatar": "/static/masters/taipei/Allen.jpg",
+    "avatar": "/static/masters/taipei/Allen.webp",
     "images": [
-      "/static/masters/taipei/Allen.jpg"
+      "/static/masters/taipei/Allen.webp"
     ],
     "specialties": [
       "深層精油SPA",
@@ -1640,14 +1640,14 @@ function renderMasters() {
 
   list.forEach((m, idx) => {
     const rawPhotos = m.images && m.images.length > 0 ? m.images : [m.avatar];
-    const photos = rawPhotos.map(p => (p && p.startsWith('/')) ? p.slice(1) : (p || 'static/masters/taipei/Ace.jpg'));
+    const photos = rawPhotos.map(p => (p && p.startsWith('/')) ? p.slice(1) : (p || 'static/masters/taipei/Ace.webp'));
     const picsJson = encodeURIComponent(JSON.stringify(photos));
 
     let imagesHtml = '';
     photos.forEach((pic, pIdx) => {
       imagesHtml += `
         <div class="relative w-full h-full min-w-full flex-shrink-0 snap-center cursor-pointer overflow-hidden bg-stone-100" onclick="openLightbox('${picsJson}', ${pIdx})" style="width: 100%; height: 100%;">
-          <img src="${pic}" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" alt="${m.name}" style="width: 100%; height: 100%; display: block;" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='static/masters/taipei/Ace.jpg';">
+          <img src="${pic}" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" alt="${m.name}" style="width: 100%; height: 100%; display: block;" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='static/masters/taipei/Ace.webp';">
         </div>
       `;
     });
@@ -2116,6 +2116,25 @@ window.goToStep = function(step) {
     }
 
     if (step === 3) {
+      // 驗證服務地點：若為外出服務，地址為必填
+      const locRadios = document.getElementsByName('location-type');
+      let chosenLoc = '外出到府/指定飯店';
+      for (let r of locRadios) {
+        if (r.checked) chosenLoc = r.value;
+      }
+      if (chosenLoc.includes('外出到府') || chosenLoc.includes('飯店') || chosenLoc.includes('外出服務')) {
+        const addrInput = document.getElementById('custom-address-input');
+        const addrVal = addrInput ? addrInput.value.trim() : '';
+        if (!addrVal) {
+          alert('請填寫完整外出地址（住家地址或指定飯店房號）以利為您安排師傅前往！');
+          if (addrInput) {
+            addrInput.focus();
+            addrInput.classList.add('ring-2', 'ring-rose-500');
+          }
+          return;
+        }
+      }
+
       if (!selectedTime) {
         const firstAvail = document.querySelector('.slot-box:not(.locked)');
         if (firstAvail) {
