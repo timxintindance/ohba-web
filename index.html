@@ -69,6 +69,11 @@
         <span class="px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-900 font-medium shadow-xs">
           <i class="fas fa-car text-rose-600 mr-1"></i> 可外出到府旅館
         </span>
+        <a href="#reviews-section" class="px-3 py-1 rounded-full bg-rose-50 border border-rose-300 text-rose-900 font-bold shadow-xs hover:bg-rose-100 transition-all flex items-center gap-1">
+          <i class="fas fa-heart text-rose-600"></i>
+          <span>顧客真實感受（對話好評）</span>
+          <i class="fas fa-chevron-right text-[9px] text-rose-600"></i>
+        </a>
         <a href="#studio-section" class="px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-900 font-bold shadow-xs hover:bg-amber-100 transition-all flex items-center gap-1">
           <i class="fas fa-door-closed text-amber-600"></i>
           <span>雙北西門工作室（查看實景環境）</span>
@@ -104,6 +109,184 @@
       <!-- 師傅卡片容器 (由 JS 動態注入，支援圖片懶加載) -->
       <div id="masters-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         <!-- 由 JS 動態注入 -->
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         SECTION 1.3：她們的真實感受 (Customer Feedback Gallery)
+         ════════════════════════════════════════════════════════════ -->
+    <section id="reviews-section" class="space-y-4 pt-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h3 class="text-lg font-bold text-stone-900 tracking-wide flex items-center gap-2">
+            <span class="w-2 h-5 rounded-full bg-gradient-to-b from-rose-500 to-amber-600 inline-block"></span>
+            她們的真實感受
+          </h3>
+          <p class="text-xs text-stone-500 mt-0.5">來自體驗顧客的真實 LINE 對話回饋 · 點擊圖片可高清全螢幕放大預覽</p>
+        </div>
+        <div class="flex items-center gap-1.5 text-xs text-rose-600 font-bold bg-rose-50 border border-rose-200 px-3 py-1.5 rounded-full w-fit">
+          <i class="fas fa-heart text-xs"></i>
+          <span>100% 真實顧客滿意好評</span>
+        </div>
+      </div>
+
+      <!-- 顧客好評回饋 12 張截圖 (手機橫向滑動輪播 / 電腦 4 欄網格) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <!-- Review 1 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 0)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_1.jpg" alt="顧客回饋 1" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「又高又帥、服務很好」</p>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 1)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_2.jpg" alt="顧客回饋 2" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「滿意！想固定找他」</p>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 2)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_3.jpg" alt="顧客回饋 3" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「力道手法非常棒」</p>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 3)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_4.jpg" alt="顧客回饋 4" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「很貼心、超級溫柔」</p>
+          </div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 4)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_5.jpg" alt="顧客回饋 5" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「極致舒壓心動體驗」</p>
+          </div>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 5)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_6.jpg" alt="顧客回饋 6" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「溫柔體貼，很美好的體驗」</p>
+          </div>
+        </div>
+
+        <!-- Review 7 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 6)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_7.jpg" alt="顧客回饋 7" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「放鬆安心的相處」</p>
+          </div>
+        </div>
+
+        <!-- Review 8 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 7)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_8.jpg" alt="顧客回饋 8" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「聊天按摩都很享受」</p>
+          </div>
+        </div>
+
+        <!-- Review 9 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 8)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_9.jpg" alt="顧客回饋 9" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「細膩被重視的感覺」</p>
+          </div>
+        </div>
+
+        <!-- Review 10 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 9)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_10.jpg" alt="顧客回饋 10" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「約會時光剛剛好」</p>
+          </div>
+        </div>
+
+        <!-- Review 11 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 10)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_11.jpg" alt="顧客回饋 11" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「專業體貼、滿分推薦」</p>
+          </div>
+        </div>
+
+        <!-- Review 12 -->
+        <div class="glass-card overflow-hidden bg-white border border-stone-200 rounded-2xl shadow-xs cursor-pointer group hover:border-amber-300 transition-all" onclick="openLightbox('%5B%22static/reviews/review_1.jpg%22%2C%20%22static/reviews/review_2.jpg%22%2C%20%22static/reviews/review_3.jpg%22%2C%20%22static/reviews/review_4.jpg%22%2C%20%22static/reviews/review_5.jpg%22%2C%20%22static/reviews/review_6.jpg%22%2C%20%22static/reviews/review_7.jpg%22%2C%20%22static/reviews/review_8.jpg%22%2C%20%22static/reviews/review_9.jpg%22%2C%20%22static/reviews/review_10.jpg%22%2C%20%22static/reviews/review_11.jpg%22%2C%20%22static/reviews/review_12.jpg%22%5D', 11)">
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-stone-100">
+            <img src="static/reviews/review_12.jpg" alt="顧客回饋 12" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full"><i class="fas fa-search-plus mr-1"></i>放大看對話</span>
+            </div>
+          </div>
+          <div class="p-2 text-center bg-stone-50/50">
+            <p class="text-[11px] font-bold text-stone-700 truncate">「放鬆又安心的體驗」</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -700,6 +883,6 @@
   </footer>
 
   <!-- 前端 JavaScript 核心 (加上版本號確保手機與瀏覽器即時載入最新代碼) -->
-  <script src="static/js/customer.js?v=8.1"></script>
+  <script src="static/js/customer.js?v=8.2"></script>
 </body>
 </html>
