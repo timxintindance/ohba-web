@@ -55,6 +55,19 @@ Opa-line-ai-bot-web/
 
 > **填寫規範**：請每次完成任務後，將最新的一筆日誌加在**本區塊的最上方**。
 
+### [2026-11-24 22:15] - SEO 優化全面落地：robots.txt、sitemap.xml、Canonical、Open Graph、Favicon 與 JSON-LD 結構化資料
+- **操作者**：Antigravity (電腦端)
+- **本次改動內容**：
+  1. **robots.txt 修正**：將 Sitemap 路徑修正為 `https://www.ohbaspa.com.tw/sitemap.xml`，移除舊子網域指向。
+  2. **sitemap.xml 更新**：更新站點唯一主網址為 `https://www.ohbaspa.com.tw/`，lastmod 標記為今日 `2026-11-24`。
+  3. **Head SEO 標籤補齊**：
+     - 加入繁體中文 Meta Description（精簡精準 77 字，涵蓋「女性專屬」「帥哥按摩」「西門」「雙北、台中、高雄到府」「LINE 預約」）。
+     - 加入標準 `<link rel="canonical" href="https://www.ohbaspa.com.tw/">`。
+     - 加入完整 Open Graph 社交分享標籤（`og:title`、`og:description`、`og:url`、`og:type=website`、`og:image` 指向現有工作室實景照、`og:locale=zh_TW`）。
+     - 補齊根目錄 `/favicon.ico`（自官方高畫質品牌 Logo 轉換 multi-size 16/32/48/64 ico）、`apple-touch-icon.png` 與 `<link rel="icon">`，解決 404 問題。
+  4. **HealthAndBeautyBusiness JSON-LD 結構化資料**：加入符合 Schema.org 規範之結構化數據（商家名稱、網址、說明、服務區域、西門捷運站地址、營業時間 09:00–02:00、LINE 預約聯繫窗口、工作室實景圖），經 Schema.org Validator 檢驗 0 錯誤通過。
+  5. **外觀零變動嚴格把關**：所有修改皆位於 `<head>`、`robots.txt`、`sitemap.xml` 與根目錄圖示，頁面視覺、排版與使用者操作體驗完全不變。
+
 ### [2026-11-20 11:11] - 效能與細節優化：全面 WebP 化瘦身 78.8%、統一營業時間 09:00 - 02:00、外出地址必填驗證
 - **操作者**：Antigravity (電腦端)
 - **本次改動內容**：
